@@ -1,4 +1,4 @@
-from Person import Person
+from Exeptions_ListComprehensions.Person import Person
 
 
 def get_people_over_18(person_list: list) -> list:
