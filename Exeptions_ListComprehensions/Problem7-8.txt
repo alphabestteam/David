@@ -1,0 +1,8 @@
+1. JSON is a format that contains information (usually information inside more information) it's a very popular format
+for transferring data from server side and more.
+
+2. To use some json functionality in our python code we need to import json. This will allow us to use multiple functions
+that are very useful for when it comes to converting JSON format into python objects.
+Main functions from json module:
+load() - This function loads the JSON into a python object.
+dump() - This function allows us to write to the JSON file using our python objects.

@@ -1,0 +1,6 @@
+1. List comprehensions is a faster way for creating a new list based on values
+    from a different list
+
+2. You dont have to use list comprehension but its recommended because of all its features are 
+    very useful
+
