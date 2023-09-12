@@ -1,0 +1,89 @@
+Imports:
+
+1. Import allows you to bring code from a different module. This way we can access functions from other places
+    instead of creating them from scratch for example: from random import randint -> Now that we imported this we have
+    access to the function randint instead of creating our own function
+
+2. There are a couple of ways we can import something
+    a. importing from the same directory - import <name>
+
+    b. importing from a subdirectory - here we already need to specify where we want to
+       import from - from myImport import something. (using .. would go back in files)
+    overall when importing something you need to specify from where your importing (unless its in the same directory)
+
+3. That if statement allows us to control when the code is being ran. If we dont use that statement then when we import 
+    that module from a different file were going to end up running everything in that module because importing runs the module
+    that was imported. If we do use that statement then when we import that module we wont need to run the main code
+    of that module.
+    Instead we will just have all the functions and the variables that were defined at indentation level 0. 
+    
+    To sum it up the if statement is to ensure that we don't run the code when we import that module into a different file.
+
+Classes:
+
+4. A class is a template of methods and variables that are used to create specific types of objects. Basically lets us keep
+    the code clean and organized.
+
+5. We would want to use classes when were going to be making a lot of the same thing for example if we were to make a game
+    in this game you have 10 balls that are dropping from the sky and trying to hit you. In this example we would want to
+    create a class names balls so that we can quickly make objects of that class. This helps us avoid creating 10 balls with 
+    different values in there variables.
+
+    Pros:
+    1. keeps the program organized
+    2. Allows the use of inheritance
+    3. classes gives us the ability to reuse code which makes the program more efficient.
+
+6. An attribute of a class is a changeable property of a class that can be set to a different value.
+    example: 
+        class Car:
+            speed = 5
+            engine_size = 3
+        
+        car1 = Car()
+        car1.speed = 10
+
+7. An object is an instance of a class that gets attributes (not always) and properties. They also get methods to run on the object
+    example: 
+        class Car():
+            speed = x
+            engine_size = 3                
+        
+        car1 = Car()
+        car1.speed = 10
+
+8. A constructor's is a way for us to construct an object to what we need. When creating an 
+    object the classes constructor runs automatically and is used for initializing its values.
+
+   A destructor is a method that deletes an object from the memory.
+
+9. Self is the instance of the class when using self we can access the attributes and methods within the class.
+    
+10. Inheritance gives us the ability to create a class that automatically inherits all of the properties and methods
+    from a different class (the class you inherited)
+    In python inheritance looks like this -> class Student(Person):. here we see that Student inherits Person
+    
+11. Polymorphism is in other words is the condition of occurrence in different forms. We might want to use this when we have
+    lots of objects that are in the same category but at the same time they are different object types.
+
+12. a static methods and variable allows us to use the methods/variable from anywhere in the code without using the object.
+    A static variable changes everywhere meaning if you change it in once place it changes the value in every other place that 
+    the variable exists in.
+    A static methods don't have access to the properties of the class itself but if you need a function that does things
+    that are related to that class that doesn't require the classes properties we use static functions
+
+    @staticmethod decorator
+    def static_method():
+
+
+
+
+
+
+
+
+
+    
+
+
+
