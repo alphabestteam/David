@@ -1,0 +1,62 @@
+1. A function is a block of code that can be called and reused an endless amount of times. We usually use functions to avoid repeating code.
+
+2. A return value in a function returns a value, object or anything that the developer wants to the place that it was called from.
+for example:
+
+def calc_sum(x, y):
+    sum = x + y
+    return sum
+
+
+sum = calc_sum(5, 3)
+print(sum)
+
+#return value = 8
+
+Here we can see that we give the function calc_sum 2 parameters and it return those values summed together.
+
+
+3. Pass by value means that a copy of the data is passed to the function and not the address,
+   meaning anything that you chance inside of the function wont affect the original data (since not a reference)
+
+   Pass by reference is when you pass the address to the variable this means that if you change it in a function it changes
+   in all places (chances the value in spot address) 
+
+
+4. Scope is where a variable is reachable and accessible. for example:
+
+def top_func():
+    x = 5 #the variable x is inside the scope of the top_func.
+
+print(x)
+
+Here were trying to print x but we wont be able to because x is not in our scope.
+
+A variable gets deleted with the function so once you run the function anything inside the scope of the function well be deleted
+when the function gets deleted.
+
+A scope ends when you leave a level of indentation for example
+
+x = 10
+for i in array:
+    i < 10
+    print(f"{i} is smaller then 10")
+
+if i > 100:
+    return False
+
+Here we try to use 'i' in the if block but we wont be able to due to the fact that the variable 'i' is not in the scope 
+and also was deleted with the function
+
+Theres also a global scope which is a variable that is defined at the top level of the code where all functions can 
+access that variable
+
+
+
+
+
+
+
+
+
+
