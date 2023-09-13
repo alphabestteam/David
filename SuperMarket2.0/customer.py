@@ -10,7 +10,7 @@ def get_price_per_unit(price: float, quantity: int) -> float:
 class Customer:
     def __init__(self, name: str) -> None:
         self._name = name
-        self._shopping_list = []  # [ product1 ]
+        self._shopping_list = []  # [ {"product": Product(item_name, item_price), "quantity": item_quantity} ]
 
     @property
     def name(self) -> str:
@@ -23,12 +23,6 @@ class Customer:
     @property
     def shopping_list(self) -> list[dict[object, int]]:
         return self._shopping_list
-
-    def __str__(self):
-        product_info = []
-        for product in self.shopping_list:
-            product_info.append(f"product name: {product['product'].name}, product price: {product['product'].price}, Quantity: {product['quantity']}")
-        return "\n".join(product_info)
 
     @shopping_list.setter
     def shopping_list(self, item: dict) -> None:

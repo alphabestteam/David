@@ -11,7 +11,8 @@ class Register:
         self._total_sales_history = []  # will contain name and amount for each person who bought something
 
     def checkout_customer(self, customer: object) -> None:
-        user_name_and_payment = {"user_name": customer.name, "shopping_list": customer.shopping_list}
+        total = sum_shopping_list(customer.shopping_list)
+        user_name_and_payment = {"user_name": customer.name, "shopping_list": customer.shopping_list, "total": total}
         self.total_sales_history = user_name_and_payment
         self.total_cash = sum_shopping_list(customer.shopping_list)
 
