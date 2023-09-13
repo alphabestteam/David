@@ -1,0 +1,34 @@
+1. When we dont know how many parameters were gonna need we can use the '*' to allow us to put in however many parameters as we want whenever we want
+    example:
+
+    def sum_nums(*nums)
+        sum = 0
+        for num in nums:
+            sum += num
+        return sum
+
+    sum_nums(3, 5, 1, 3, 2, 9)
+    sum_nums(4, 2 ,5)
+
+2.  The '*' is there to allow us to enter as many parameters as we want based off what we need at that given time. The important thing to note
+    about using the '*' is that now that argument becomes iterable, so now we can iterate over it. (its a non-keyword argument)
+    Printing the argument will return a tuple of whatever was passed to the function
+
+
+3. The '**' also lets you enter in as many parameters as we want but this uses keyword arguments meaning it has a key and value.
+    To iterate over this we need to use the .items() function in the for loop.
+    If we were to print kwargs we would get a dict with all the keys and values.
+
+4. The difference between the two is that '**' is a keyword argument meaning its has a key and value and '*' is just a value (a tuple).
+    We can also use both of them together
+    example:
+    def func(*args, *kwargs)
+        print(args)
+        print(kwargs)
+
+    func(1,"hi", 23, green="D89991", orange="K02938")
+
+    Here for the first 3 parameters it went into the args argument and the last 2 went to the kwargs
+
+5. Unpacking -> lets us unpack a variable into multiple variables
+   Packing -> Packing is when we dont know how many arguments are going to passed into a function so we use the '*' or '**' args to pack them up into a tuple or dict

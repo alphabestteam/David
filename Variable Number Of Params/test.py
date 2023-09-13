@@ -1,10 +1,7 @@
-def my_fun(arg1, arg2, arg3):
-    print("arg1:", arg1)
-    print("arg2:", arg2)
-    print("arg3:", arg3)
+def my_fun(*args, **kwargs):
+    print(args)
+    print(kwargs)
 
 
-# Now we can use *args or **kwargs to
-# pass arguments to this function :
-args = (3, 4, 2)
-my_fun(*args)
+numbers = [3, 4, 1, 3, 123, 3]
+my_fun(3, 2, 123, 41231, 3, 123, word="wind", letter="d", number=3)
