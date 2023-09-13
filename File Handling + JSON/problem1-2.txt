@@ -1,0 +1,9 @@
+1. We need files to save information for a later time because every time we reload the program all the information that was stored in variables will be erased and set back to default.
+2. In python you have a few options for opening files. Theres r, w, b, a, r+ and more.
+    'r' -> r refers to read mode - you will only be able to read the file.
+    'w' -> w refers to write mode - you will only be able to write to the file.
+    'b' -> b refers to binary mode - it will show you the binary for the file contents.
+    'a' -> a refers to append mode - this allows you to only append to a file aka add.
+    'r+' -> r+ opens the file for both reading and writing. ('w+') also does the same thing
+    'ab' -> ab opens the file in binary for appending.
+    You can generally combine some of these together to get different modes
