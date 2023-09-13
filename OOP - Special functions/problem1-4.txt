@@ -14,7 +14,7 @@
 3. The __eq__ method is just like writing == in your code. If you were to use the default __eq__ method on 2 different objects
     it would try and see if they are the same address in the memory
 
-4. Overloading is a way for us to change the functionality of built in methods like __str__.
+4. Overloading is a way for us to change the functionality of built-in methods like __str__.
     For example:
     class Obj1:
         def __init__(self):
@@ -30,14 +30,9 @@
     print(a == b)
 
     It would print false because
-    we are checking if the address of a is equal to the address of b. To make it work we need to overload the __eq__ method and alter whats inside.
+    we are checking if the address of an is equal to the address of b. To make it work we need to overload the __eq__ method and alter what's inside.
     for example:
     def __eq__(self, other_object):
         return self._name == other_object._name
 
     Here we altered what the __eq__ method does and if we now try and check if they equal we will get True because it uses the __eq__ function that we overloaded
-
-
-
-
-
