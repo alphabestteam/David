@@ -1,0 +1,8 @@
+a. Recursion is when a function calls itself till it a certain goal is met
+b. Most of the time you shouldn't use recursion when coding but in some cases when you 
+    want to run a code on itself multiple times you would use it. An example of recursion would
+    be factorial this way we can take the value that we got from the function and run it again with the previous value
+c. When it comes to speed loops are faster then recursive code. Recursion has to call a function every time which adds 
+    more time when running the code as to where looping doesn't need to deal with creating a new function all it does is
+    jump back to the beginning of the loop and continue.
+
