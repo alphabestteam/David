@@ -1,0 +1,19 @@
+1. Magic or Special methods in python are built in methods that start and end with 2 underscores.
+    These functions can also be overridden for more specific usage
+
+    examples:
+    __str__ -> for printing
+    __init__ -> constructor
+    __ceil__ -> is like doing math.ceil()
+    __abs__ -> returns the absolute value
+
+2. If we were to print an object from a class without overriding the __str__ method,
+    it will use the default __str__ method which will just return the objects address in a string.
+    <__main__.Ob2 object at 0x01EC8490>
+
+3. The __eq__ method is just like writing == in your code. If you were to use the default __eq__ method on 2 different objects
+    it would try and see if they are the same address in the memory
+
+4. 
+
+
