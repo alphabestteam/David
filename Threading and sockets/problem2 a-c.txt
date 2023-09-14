@@ -1,0 +1,16 @@
+a. Sockets is a way to communicate with a server in real time. Instead of the server always asking if there's an update from the client side or the other way around, we get notified when there's an update
+this helps save time and is almost instant. Sockets are connected with each-other which makes a sort of tunnel and when something gets sent into the tunnel the other side gets notified that something's waiting in the tunnel
+We usually would only use sockets when were making real time programs like games or chats.
+The alternative to sockets is using requests which is slower but sometimes more efficient when for specific programs
+
+b. First we need to create a socket, then we bind the socket to an IP address and listen for a connection once a connection occurs you need to accept the connection and connect to it from there its send and receive()
+the functions that are used:
+socket()
+bind()
+listen()
+accept()
+connect()
+and for sending and receiving data we use send() and recv()
+the last thing is the close() function which closes the connection
+
+c. The constructor gets 2 parameters, the first one is address family so an IPv4 or IPv6 aka AF_INET and the second is the type of connection usually TCO or UDP

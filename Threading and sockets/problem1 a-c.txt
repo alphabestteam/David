@@ -1,0 +1,7 @@
+a. Threads is an operation that runs separately and on its own. Meaning if you have to run two different parts of a program at the same time you would need to separate it into threads for example
+if you want to run two different for loops at the same time you would run them in separate threads. This is useful when calculating a lot of information faster another name for this is multithreading.
+
+b. To implement threading in your program you need to import threading.
+
+c. Requests in python allow us to get information using http from servers. It gives us the ability to send and retrieve data from a server. We would want to use requests over sockets when we don't need real
+time programming. Wikipedia is an example of where we need requests over sockets
