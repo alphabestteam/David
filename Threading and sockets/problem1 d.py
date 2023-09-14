@@ -1,4 +1,4 @@
-# import requests
+import requests   # type: ignore
 import time
 import threading
 
@@ -14,8 +14,7 @@ def timer(func):
 
 
 def retrieve_image(image_url):
-    # requests.get(image_url)
-    pass
+    requests.get(image_url)
 
 
 def create_threads(num_of_threads, image_urls):
