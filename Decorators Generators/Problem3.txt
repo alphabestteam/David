@@ -1,0 +1,14 @@
+a. Generators are functions that iterates yields. Instead of using return it uses yield to return a value and comes back to continue the code in the function.
+
+b.If we have a very big data sets we would want to use generators
+since they don't save anything to the memory.
+
+Pros:
+1. You don't need to worry about memory since it doesnt save. It can in theory iterate infinite amount of times
+2. Another very interesting thing about generators is that you dont need to wait for the function to return a value
+to start using it since it yields an answer every iteration.
+
+c. This way we can make more instances of the generator which also allows us to put in different arguments each time
+
+d. The yield pauses the generator and the value that you send with the yield is returned to the called of the generator
+then it goes back to where it stopped and continues the generator functino

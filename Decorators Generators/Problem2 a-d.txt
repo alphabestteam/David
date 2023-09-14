@@ -1,0 +1,7 @@
+a. Iterators are types that you can iterate over meaning it contains more then one value/and or key inside of it.
+
+b. List, Dict and tuples
+
+c. When you use del on an object it deletes it
+
+d. You can make an object iterable by adding the methods __iter__ and __next__

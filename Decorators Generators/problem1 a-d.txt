@@ -1,0 +1,14 @@
+a. Decorators let us change how a function or class works without permanently modifying it
+
+b. Using a decorator is like calling a function with a different( or same ) function as its parameter.
+
+c. A function pointer is when you assign a different name and calling it by its newly assigned name
+    Example:
+    def something():
+        does something
+
+    pointer_fun = something  # Also notice that there's no parenthesis when assigning the function to the pointer
+
+    pointer_fun()  # Here were using the function reference
+
+d. Having *args and **args makes the decorator a more general decorator which allows us to decorate functions that have any number of arguments
