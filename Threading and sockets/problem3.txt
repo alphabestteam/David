@@ -1,0 +1,10 @@
+a. It's a good way to test things, and it also lets us go between projects that use the same packages with different versions for example if we have 2 different projects that both use the same packages,
+but they are on different versions, were going to have problems with the package since it can only be one version at a time. So instead of uninstalling and reinstalling a different version for every
+time you change projects you can open a virtual environment and download the version you need then when you switch to the other project you download the version that's required there. Now we have
+for each project its own environment with its own packages.
+
+b. it creates a folder that contains all the packages that your project needs. All you need to do after creating it is activate it then your in the virtual env
+
+c. to create a venv (virtual environment) in python you run the command: python -m venv <directory>, then to activate it you run: <directory>\Scripts\activate
+
+d. Yes. I was on a venv this whole time.... But usually you would need to pip install all the packages again that you needed for that project again.

@@ -1,0 +1,2 @@
+Threading locks is when you lock a function so that no other thread can go inside. This helps when you need a thread to wait for another thread to finish before it starts running that function
+When a thread enters the function that has a lock it locks the functions and unlocks it when it's done.
