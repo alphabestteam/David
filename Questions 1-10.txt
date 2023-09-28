@@ -11,4 +11,28 @@
       These are used to see how much padding or margins (and the rest) that you have.
    b. The difference between padding and margin is that padding is space inside the element and margin is space around(outside)
 
-4. Responsive web design is when you create a web page that works on all devices
+4. Responsive web design is way for us to make Web applications look good on devices with different resolutions. The principle of responsive
+    web design is to make adjustments to fit all of your designs depending on the size of the screen. You can do this by using @media in your css to adjust
+    a specific element depending on the windows width you can also use percentages to help with changing elements sizes based off of the windows size.
+
+5. cm - Centimeters
+   mm - Millimeters
+   Q  - Quarter-millimeters
+   in - Inches
+   pc - Picas
+   pt - Points
+   px - Pixels
+
+6. Position - Position is about positioning an element in a specific place on the page
+   Display - Display lets us decide how to element behaves in terms of layout
+
+7. justify-content - you can define how to space content inside an elemnt
+   align-items - you can align the items in the flexbox across the axis
+   align-self - controls alignment of individual items
+   align-content lets you set the spaces between and around items on the axis
+   flex-grow - this gives the ability for a flex item to grow
+   flex-wrap - forces all the elements that dont fit onto the screen size into a new row
+
+8. class is used to define a lot of elements and give them the same css and ID is unique and only applys to one element
+
+

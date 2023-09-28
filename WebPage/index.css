@@ -134,7 +134,7 @@ body{
     text-align: center;
     min-height: 100%;
 }
-#wraper{
+#wrapper{
     background-color: #f5f5f5;
 }
 p{
@@ -148,7 +148,26 @@ p{
 .w-80{
     width: 80%;
 }
+.st0, .st1 {
+    fill: currentColor
+}
 
+.st1 {
+    opacity: .2
+}
+
+.st2, .st9 {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: .4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10
+}
+
+.st9 {
+    stroke-width: .4609
+}
 .default-ul{
     padding: 0
 }
