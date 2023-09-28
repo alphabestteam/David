@@ -1,0 +1,14 @@
+1.
+   a. Block level elements create a new block usually in a new line, and they inherit their parents size
+   b. Inline-block elements are arttrebutes of the block level elements. They help with styling and changing the way the block level element works.
+   c. inline-elements are elements inside another element for example:
+      <p>welcome <strong>Dovid</strong> to school</p>
+      They are usually used to change the look and behavior of an element
+
+2. Doctype is a way for us to let the browser know what version of HTML the page is written in this makes sure the webpage is converted correctly when using different web browsers
+
+3. a. CSS Box Model is wrapped around every element, it contains margin border padding and content.
+      These are used to see how much padding or margins (and the rest) that you have.
+   b. The difference between padding and margin is that padding is space inside the element and margin is space around(outside)
+
+4. Responsive web design is when you create a web page that works on all devices
