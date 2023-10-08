@@ -1,0 +1,151 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "title": "JSON Schema for Detections",
+  "type": "object",
+  "definitions": {
+    "dateString": {
+      "type": "string",
+      "description": "Date pattern",
+      "pattern": "^(20|19)\\d{2}\\-(10|11|12|0[1-9])\\-(0[1-9]|[12]\\d|30|31)T(0[0-9]|1\\d|2[0-3]):[0-5]\\d:[0-5]\\d\\.\\d{3}Z$"
+    }
+  },
+  "properties": {
+    "alertId": {
+      "type": "string",
+      "description": "Alert identifier.",
+      "id": "/properties/alertId",
+      "minLength": 1,
+      "maxLength": 50,
+      "pattern": "^([0-9]|[A-Z]|[a-z]|[\\-_]|[.,]|[(-)])+$"
+    },
+    "licensePlate": {
+      "type": "string",
+      "description": "License Plate identifier.",
+      "id": "/properties/licensePlate",
+      "minLength": 1,
+      "maxLength": 10,
+      "pattern": "^([\u05D0-\u05EA]|[A-Z]|[a-z]|[0-9]|[+ -]|[\\?])+$"
+    },
+    "longitude": {
+      "type": "string",
+      "description": "WGS84 GEO longitude.",
+      "id": "/properties/longitude",
+      "minLength": 1,
+      "maxLength": 50,
+      "pattern": "^([0-9]{2,}.[0-9]{1,10})+$"
+    },
+    "latitude": {
+      "type": "string",
+      "description": "WGS84 GEO latitude.",
+      "id": "/properties/latitude",
+      "minLength": 1,
+      "maxLength": 50,
+      "pattern": "^([0-9]{2,}.[0-9]{1,10})+$"
+    },
+    "siteName": {
+      "type": "string",
+      "description": "LPR Camera position",
+      "id": "/properties/siteName",
+      "minLength": 1,
+      "maxLength": 50,
+      "pattern": "^([\u05D0-\u05EA]|[\u05F3-\u05F4]|[A-Z]|[a-z]|[0-9]|[ \\-_]|[.,]|[(-)])+$"
+    },
+    "sensorAlertTime": {
+      "description": "The sensor creation time of the Alert",
+      "$id": "/properties/sensorAlertTime",
+      "$ref": "#/definitions/dateString"
+    },
+    "systemAlertTime": {
+      "description": "The system creation time of the Alert",
+      "$id": "/properties/systemAlertTime",
+      "$ref": "#/definitions/dateString"
+    },
+    "sensorId": {
+      "type": "string",
+      "description": "The sensor Id",
+      "id": "/properties/sensorId",
+      "minLength": 1,
+      "maxLength": 50,
+      "pattern": "^([\u05D0-\u05EA]|[\u05F3-\u05F4]|[A-Z]|[a-z]|[0-9]|[ \\-_]|[.,]|[(-)])+$"
+    },
+    "sensorName": {
+      "type": "string",
+      "description": "The sensor Name",
+      "id": "/properties/sensorName",
+      "minLength": 1,
+      "maxLength": 100,
+      "pattern": "^([\u05D0-\u05EA]|[\u05F3-\u05F4]|[A-Z]|[a-z]|[0-9]|[ \\-_]|[.,]|[(-)])+$"
+    },
+    "sensorType": {
+      "type": "integer",
+      "description": "The sensor Type",
+      "id": "/properties/sensorType",
+      "minimum": 1,
+      "maximum": 10
+    },
+    "licenseType": {
+      "type": "integer",
+      "description": "The license Type",
+      "id": "/properties/licenseType",
+      "minimum": 1,
+      "maximum": 10
+    },
+    "carMakerName": {
+      "type": "string",
+      "description": "The car maker name",
+      "id": "/properties/carMakerName",
+      "minLength": 1,
+      "maxLength": 100,
+      "pattern": "^([\u05D0-\u05EA]|[\u05F3-\u05F4]|[A-Z]|[a-z]|[0-9]|[ \\-_])+$"
+    },
+    "carBrandName": {
+      "type": "string",
+      "description": "The car brand name",
+      "id": "/properties/carBrandName",
+      "minLength": 1,
+      "maxLength": 100,
+      "pattern": "^([\u05D0-\u05EA]|[\u05F3-\u05F4]|[A-Z]|[a-z]|[0-9]|[ \\-_])+$"
+    },
+    "carColorName": {
+      "type": "string",
+      "description": "The car color name",
+      "id": "/properties/carColorName",
+      "minLength": 1,
+      "maxLength": 50,
+      "pattern": "^([\u05D0-\u05EA]|[\u05F3-\u05F4]|[A-Z]|[a-z]|[0-9]|[ \\-_])+$"
+    },
+    "confidence": {
+      "type": "number",
+      "description": "The confidence level percentage",
+      "id": "/properties/confidence",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "distributionTime": {
+      "$id": "/properties/distributionTime",
+      "description": "The queues distribution time",
+      "$ref": "#/definitions/dateString"
+    },
+    "groupIds": {
+      "type": "array",
+      "description": "The destinations groups to receive the message",
+      "id": "/properties/groupIds",
+      "items": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 100
+      },
+      "maxItems": 15
+    },
+    "sourceSystem": {
+      "type": "string",
+      "description": "source system for detection",
+      "id": "/properties/sourceSystem",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "^([\u05D0-\u05EA]|[\u05F3-\u05F4]|[A-Z]|[a-z]|[0-9]|[ \\-_]|[.,]|[(-)])+$"
+    }
+  },
+  "additionalProperties": false,
+  "required": [ "alertId", "sensorAlertTime", "sensorId", "sensorName", "sensorType", "distributionTime", "sourceSystem" ]
+}

@@ -1,0 +1,51 @@
+1. JSON is a format that looks like a Javascript object and is used to format data to make things easier to read and deal with.
+
+2. JSON objects are built by having a key and value inside curly braces. {name: "david", color: "green"}
+
+3. Class, Table, Dictionary, Hash and more.
+
+4. ArrayLists, Tuples, List, Array, Collection and more.
+
+5. Strings, numbers(int or floats), Bool, Objects, Arrays and Null can all be used inside JSON objects.
+
+6. The same as answer 5.
+
+7. Numbers bools objects arrays and null, basically anything that's not a string type.
+
+8. You can do an empty string so 0 technically.
+
+9. JSON keys are used to find and identify a specific value inside an object. They are used as "Key" for a value that we are looking for. They are used for accessing and organizing data in JSON objects.
+
+10. They are supported.
+
+11. Yes
+
+12. yes
+
+14. A key and value seperated by a colon and wrapped around curly braces. {name: "david", color: "green"}
+
+15. JavaScript Object Notation.
+
+16. .JSON
+
+17. A comma is used to separate between data in JSON format.
+
+18. []
+
+19. {}
+
+20. Yes.
+
+21. There is no difference besides the fact that parse is in JS and load is in Python.
+
+22. XML is a format that uses Tags to define what things are (link in html). It isnt so useful and is complex
+
+23. First major difference would be the syntax, json uses key and value while xml uses tags and attributes.
+    Another major difference is the popularity. Json files are way more popular and used around the world.
+
+24. 1 -> When transferring data from backend to frontend.
+    2 -> When getting information from the DB.
+    3 -> Messing around with data in files.
+
+26. papuchasJason["codenames"][0]
+    He also goes by the name "Red Hood"

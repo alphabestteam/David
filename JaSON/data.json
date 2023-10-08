@@ -1,0 +1,61 @@
+{
+  "Person_list": [
+    {
+      "person_name": "David",
+      "age": 21,
+      "Cars": [
+        {
+          "car_name": "Toyota",
+          "price": 20000,
+          "year": 2012,
+          "horse_power": 200,
+          "max_speed": 160,
+          "cylinders": 4
+        },
+        {
+          "car_name": "Ford",
+          "price": 18000,
+          "year": 2014,
+          "horse_power": 140,
+          "max_speed": 160,
+          "cylinders": 4
+        },
+        {
+          "car_name": "BMW",
+          "price": 90000,
+          "year": 2018,
+          "horse_power": 400,
+          "max_speed": 220,
+          "cylinders": 6
+        }
+      ]
+    }
+  ],
+  "Cities": [
+    {
+      "city_name": "Beit Shemesh",
+      "time_zone": "GMT+1",
+      "zip_code": 998738,
+      "population": 300000,
+      "year_established": 1947,
+      "mayor_of_city": {
+        "name": "John",
+        "age": 56,
+        "year_elected": 2040,
+        "yearly_salary": 200000
+      },
+      {
+      "city_name": "Jerusalem",
+      "time_zone": "GMT+1",
+      "zip_code": 6345345,
+      "population": 928364,
+      "year_established": 1967,
+      "mayor_of_city": {
+        "name": "Moshe Lion",
+        "age": 62,
+        "year_elected": 2018 ,
+        "yearly_salary": 200000
+      }
+    }
+  ]
+}
