@@ -1,0 +1,41 @@
+Linux vs. Windows: What's the Difference?
+1.	מה השוני בין Linux לבין Windows מבחינת מערכת הקבצים ?
+Windows uses C, D, E and more drives to contain
+folders and files
+Linux uses a Tree file system where there's
+ a Root file
+
+2.	אילו סוגי קבצים יש בלינוקס ?
+In Linux there are only files. Everything is a file.
+General Files
+Directory Files
+Device Files
+
+3.	מה הוא משתמש הroot בלינוקס ?
+The root user is a superuse that has access to
+restricted files, installing new files and has
+admin privileges for more advanced things.
+
+
+4.	האם קיימת האפשרות ליצור 4 קבצים ששמותיהם הם: Example, eXAmple, example, EXAMPLE בלינוקס ? ובwindows ?
+In Linux file names are case sentsitave meaning
+as long as the file contains different cases it could
+have the same name.
+Windows on the other hand does not allow this
+is only allows you to use one name per file(in the same folder)
+
+ 
+5.	איפה תיקיית הבית של משתמש בשם "ohad" נמצאת בלינוקס ? ובwindows?
+In Linux you would find ohads file in /home/ohad
+In Windows you would find it in C/documents.
+
+
+
+6.	איפה נמצאים קבצים זמניים בלינוקס ? ובwindows ?
+In windows all of the files are saved in the
+C:  drive. (From what I remember there's a dedicated folder named Temp in windows)
+In Linux there are dedicated files that contain
+these files such as temp which is saved in the tmp directory
+
+
+

@@ -1,0 +1,45 @@
+Introduction to the Linux Operating System
+1.	מה זה מערכת הפעלה ?
+An operating system is a software
+that comes with a kernel and also has
+programs that let us do simple
+tasks on our computer.
+
+2.	מה זה kernel ?
+The kernel is the main program inside the
+operating system. Its main focus is to
+connect the software with the hardware and
+communicate between them.
+
+3.	מה מיוחד במערכת הפעלה Linux ?
+Linux is special because it is open source which
+allows programmers to customize the operating
+system and kernel to whatever they want.
+it also has very good protection and allows the
+user to access very important things like the kernel
+
+4.	רשום מספר יתרונות של מערכת הפעלה Linux.
+1.	Open source
+2.	Very secure
+3.	Free of charge
+4.	Popular and has lots of support
+
+5.	מה ההבדל בין Unix לבין Linux ?
+Linux is pretty much a copy of Unix since it was
+built based off the idea of Unix the main difference
+is that Linux is open source and allows users to
+change anything they want to there liking
+
+6.	מה זה Linux Distribution ?
+Linux Distributions are different types of versions
+of Linux that are customized to a general/specific
+audience. They are created by companies for
+private use or public use that anyone can download
+
+7.	מנה מספר Distributions.
+1.	Ubunto
+2.	Linux Mint
+3.	 Stackware
+4.	 OpenSUSE
+    and alot more
+
