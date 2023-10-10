@@ -1,0 +1,9 @@
+1. Switches allow us to connect loads of devices within a LAN and uses the devices MAC
+   address to send data to different destinations.
+   Switches helps solve security issues and also help with organizing.
+
+2. When data is sent to a switch it gets sent with a header that contains the MAC address of the
+   destination. The switch then uses the MAC address to send the data to the correct destination.
+   MAC addresses are addresses assigned to physical devices like printers and computers.
+
+
