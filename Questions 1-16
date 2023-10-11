@@ -1,0 +1,54 @@
+1. Internet Engineering Task Force AKA IETF is the organization that's incharge of defining internet technologies.
+
+2. A Communication protocol is a set of rules that gives communication systems the ability to transfer data between each other.
+   These protocols can be used both by hardware and software as well as both of them together.
+
+3. RFC stands for Request for Comments. It is a document that describes the standards and protocols of the internet.
+
+4. HTTP is used to transfer data such as HTML between a client and a server. It is a request-response protocol. Something important about HTTP is that its a stateless protocol
+   which means that the server does not keep any data from requests.
+
+5. http is a protocol for transferring data but its not really a secure way of doing it, thats why they created https which uses
+   more protocols for security reasons. Some of the protocols it uses are TCP/IP, TLS, SSL.
+   TCP/IP is the connection that occurs when sending data. This is something that is used both in http and https.
+   TLS which is also named SSL is used only in HTTPS and is used to encrypt the normal HTTP requests and responses as well as digitally sign those requests and responses.
+   Overall http is the same as https just https is secure and has features like TLS (same as SSL just the new versions name) to encrypt the TCP/IP connection and data that's transferred.
+
+6. http is generally used for transferring data typically HTML. http is a client-server protocol, meaning requests are sent from clients and the server respond.
+   The data sent by the client are called "requests" and the data that the server sends back is called "response".
+
+7. User-Agent: User-Agents are sent in the requests header to the server so that the server can identify things about the request like Operating system, vendor, version and more.
+   Web server: Web servers are simply servers that allow us to communicate with them to retrieve information. This is done by sending a request the the web servers domain name and
+               URL to get specific information. Web servers get and send requests by using the HTTP/HTTPS protocol.
+   Proxies: A proxy is a server that acts as a middleman between a user and the websites they visit.
+
+8. Proxies are used for preventing cyber attackers from entering a private network and also for filtering the content (if set up to do so) that the website responds with.
+   Proxies are the ones that retrieve the websites content before the user to check for things (depends on the case) then it sends it to the user.
+
+9. A state is a status that is saved of a protocol and it changes as you move through the steps of the protocol based off the previous state.
+
+10. No http doesnt not have a state and is considered a stateless protocol.
+
+
+11. Client creates a connection to a server and sends data.
+    Server receives a http request from the client.
+    The server then does different things depending on the request.
+    Then the server sends a response to the client.
+    The connection then closes (unless you want to keep it open for more requests)
+
+12. Request headers are incharge of keeping data about the request like where it came from, user agent and more information regarding the request/response.
+
+13. Cookies are small pieces of text saved on your browser by a website you visit to help the website remember information about you. A good example is tokens that are saved
+    as cookies to verify you instead of always needing the enter your email and password.
+
+14. Request line - contains the http method, version and URL.
+    Headers - typically the user-agent and some more information about the request.
+    Request body - this is optional when sending a request but this is used for sending information like POST and PUT requests for transferring data.
+
+15. Status line - consists of http version and status code like 200, 404, 500 and more.
+    Headers- things that are important for the response like the type and length also date and other important information.
+    Response Body- here's where the content of the response is sent and contains the data that is sent back from the request.
+
+16.
+    HTTP.2 - 1. TCP, 2. Fewer error handling capabilities, 3. TLS is optional
+    HTTP.3 - 1. QUIC which operates over UDP, 2. Enhanced error handling capabilities due to QUIC, 3. TLS is not optional and is embedded in QUIC and is by default in HTTP/3
