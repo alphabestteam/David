@@ -1,0 +1,103 @@
+1. models.py contains classes and fields where tables represent tables and fields represents the column types.
+   Some field options are null,  blank, default, editable unique and more.
+   models.py is mostly incharge of containing the DBs build state.
+
+2. Views is incharge of the logic in the backend. That's where all of the functionality is done for the clients requests.
+   The functions in the view can retrieve data from the db, send an email and do lots of more backend related logic.
+
+3. The url.py file holds all of the URLs that our project works with.
+   When a client enters a url it checks the url.py and if it exists it then will send the request to a view function
+   that will handle the clients request.
+
+4. Migration is the process of applying changes to your model (db schema). Its incharge of keeping your model and db in sync.
+   To add a new migration you need to write into the cmd line: manage.py migrate.
+
+5. The serializer converts complex data types like django model instances into python objects so that we can then
+   convert it into json. The reason we do this is because some things are to complex to immediately convert into json format
+
+6. The django framework is a open-source python web framework that follows the MVC architecture. Its used as a backend tool
+   to help manage everything and comes with a lot of built in functionality that makes us coders not depressed while coding.
+
+7. Serializer and Model Serializers generally do the same thing the difference is that Model Serializer is designed for
+   serializing and deserializing data that corresponds to a django model.
+   it also has built in validation and automatically generates fields based on the models fields. Another important thing
+   that model serializers do is handle the DB operations for you.
+
+   The regular Serializer doesnt create fields based off the django model or have built in validation system.
+   It also doesnt it serializes data that isn't necessarily tied to our DB model.
+
+   You would typically use Model Serializer when your working with data that's built like django models since it provides
+   lots of convenient functionally for data that's designed like a django model.
+   As for regular serializer you use when you're parsing data that's not django model related. regular serializing works
+   with all types of data.
+
+8. There are three different types of relations in the Django model:
+    One to One - acts similarly to ForeignKeys with unique=True,
+    which lets have 2 fields in separate models that are connect like a person and a profile. each person has one profile.
+
+    Many to One - Same ideas as one to one just here one model has one field that alot of different modals are connected to.
+    for example: An auther and a book. You can have lots of books for one auther (M:1)
+
+    Many to Many - Many to Many (M:M) lets us have a field thats connected to multiple other fields and also vise versa
+    at the same time.
+    example: A student has many classes meanwhile classes are taught to may students. This shows how the field students
+    are connected to many classes meanwhile classes are also connected to many students.
+
+9. django-admin startproject <projectname>
+   manage.py startapp appname
+   Then we need to define a model by entering the models.py file.
+   create a migration so we can create ad DB table by running this command: manage.py makemigrations appname
+   apple the migration by running the command: manage.py migrate
+   Register the app in settings.py by adding it to the list of installed apps
+
+10. The request gets bundled up, data gets encoded for transmission, sends it to the server and then receives back a response.
+
+11. Middleware is A framework of hooks that is activated when someone sends a request and also after the view before the response meaning the middleware process data
+    (based on whatever you specify) before and/or after the view. The point of these hooks are to alter the input or outputs of a request/response.
+    A good example of this would be when someone wants to enter his password and we want to make sure hes not entering anything that might cause an SQL injection.
+    When they enter the password it would get to the backend go though the urls then before it gets to the view we would send it to a middleware hook to check if the input
+    contains anything that might cause an SQL injections and take care of it.
+    We can also make hooks after the view to change the output of the response.
+
+
+12. Fixtures are collections of data that are serialized and contain records for database tables.
+    They are good for multiple things like:
+        Initial data - When we want to fill alot of data into a DB we can use fixtures that contain all of the data we need
+        for the db.
+
+        Testing - Fixtures help us with testing to make sure that the DB is correct and everything works perfectly.
+
+        Sharing - When we want to share data we could simple use fixtures to transfer that data to multiple instances of an application.
+
+13. In QuerySet theres a function that retrieves all objects -> model.objects.all() - This will return a QuerySet that contains all objects
+    from that model.
+    It retrieves every row from the table and represents them as a QuerySet which is a collection of objects in python.
+    Typically this function is used when you want to retrieve all the data in a DB table.
+    For example:
+        When we want to show a list of all products in the store, or to do some sort of calculation based off every product.
+
+14. Manager is an interface that allows us to use or make functions that execute SQL queries so we can access them in a more simple manner.
+    Example of a new manager function would be a function that returns a query of all students.
+    This would now allow us to call this function and get a response from the DB.
+    Now that we have that QuerySet we can do even more queries on all students.
+    This allows us to set up functions that will execute sqls that might be complex in simpler terms.
+    Overall Manager is an interface that lets us manage SQL queries easier.
+    Some of the default manager functions are:
+        create()
+        save()
+        all()
+        filter()
+        exclude()
+        get()
+        and more....
+
+
+
+
+
+
+
+
+
+
+
