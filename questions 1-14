@@ -76,20 +76,13 @@
     For example:
         When we want to show a list of all products in the store, or to do some sort of calculation based off every product.
 
-14. Manager is an interface that allows us to use or make functions that execute SQL queries so we can access them in a more simple manner.
-    Example of a new manager function would be a function that returns a query of all students.
-    This would now allow us to call this function and get a response from the DB.
-    Now that we have that QuerySet we can do even more queries on all students.
-    This allows us to set up functions that will execute sqls that might be complex in simpler terms.
-    Overall Manager is an interface that lets us manage SQL queries easier.
-    Some of the default manager functions are:
-        create()
-        save()
-        all()
-        filter()
-        exclude()
-        get()
-        and more....
+14. Manager is an object that handles queries to the DB for a model. It gives us some sort of API for interacting with the DB table associated with the model.
+    Managers let us create, update, delete and retrieve data from the DB.
+
+    Every model has a default manager named "object" this manager is automatically created for each model you create. The object manager provides methods for some
+    basic queries to the db like filtering, creating and more.
+
+
 
 
 
