@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class RandomnumberConfig(AppConfig):
+class ApiConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'RandomNumber'
+    name = 'Api'
