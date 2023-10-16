@@ -29,8 +29,8 @@ def update_target(request):
         target_serialized = TargetSerializer(target, data=data)
         if target_serialized.is_valid():
             target_serialized.update(target, data).save()
-            return JsonResponse({"message": "successfully updated the target"}, safe=False, status=status.HTTP_200_OK)
-        return HttpResponse("message: Target didnt meet the requirements", status=status.HTTP_400_BAD_REQUEST)
+            return HttpResponse("successfully updated the target", status=status.HTTP_200_OK)
+        return HttpResponse("Target didnt meet the requirements", status=status.HTTP_400_BAD_REQUEST)
 
 
 def all_targets(request):
