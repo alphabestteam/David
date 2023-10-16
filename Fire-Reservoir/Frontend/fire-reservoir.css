@@ -1,0 +1,35 @@
+body {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('assets/background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+html, body{
+    height: 100%;
+    width: 100%;
+}
+#map {
+    height: 84%;
+    width: 70%;
+    flex:1;
+}
+.website-headline{
+    height: 6%;
+    font-size: 30px;
+    color: white;
+}
+.actions-container{
+    height: 10%;
+}
+.checkbox-container{
+    padding-top: 10px;
+    justify-content: center;
+    display: flex;
+}
