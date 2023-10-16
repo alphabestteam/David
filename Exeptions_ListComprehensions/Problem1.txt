@@ -1,0 +1,16 @@
+1. Exceptions is an error that occurs when running a program. If we get an error python generates an exception so we 
+    can handle the error correctly(instead of it crashing the program)
+    We need to use a try and except block around areas where errors can occur to prevent crashes and 
+    handle said exception accordingly
+    try:
+        int(input("Enter a number)) #as you can see we can fall into a ValueError here because the user
+                                    #might enter a letter instead of a number
+    
+    except ValueError:                  #Here we catch the error and handle it (instead of crashing the program)
+        print("an error has occurred")
+        handle_error()
+
+
+2. 
+
+    
