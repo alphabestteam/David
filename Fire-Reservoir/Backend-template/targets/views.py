@@ -15,7 +15,7 @@ def add_target(request):
     data = json.loads(request.body)
     serialized = TargetSerializer(data=data)
     if serialized.is_valid():
-        serialized.create(data).save()
+        serialized.create(data)
         return HttpResponse("Target added successfully", status=status.HTTP_201_CREATED)
     return HttpResponse("Target didnt meet the requirements", status=status.HTTP_400_BAD_REQUEST)
 

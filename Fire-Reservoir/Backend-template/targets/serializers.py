@@ -7,8 +7,8 @@ class TargetSerializer(serializers.ModelSerializer):
         model = Target
         fields = "__all__"
 
-    def create(self, validated_data):
-        return Target(**validated_data)
+    # def create(self, validated_data):
+    #     return Target(**validated_data)
 
     def update(self, instance, validated_data):
         instance.name = validated_data.get("name", instance.name)
