@@ -1,3 +1,4 @@
+from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import Person
@@ -26,12 +27,14 @@ def add_person(request):
 
 
 @csrf_exempt
-def delete_person(request, id):
-    if request.method == "GET":
-        person = Person.objects.get(id=id)
-        person.delete()
-        return HttpResponse(f"Successfully deleted person with ID: {id}", status=status.HTTP_200_OK)
-    return HttpResponse(f"request not correct method. got {request.method} instead of GET", status=status.HTTP_400_BAD_REQUEST)
+def delete_person(request, person_id):
+    if request.method == "DELETE":
+        try:
+            person = Person.objects.get(id=person_id)
+            person.delete()
+            return HttpResponse(f"Successfully deleted person with ID: {person_id}", status=status.HTTP_200_OK)
+        except ObjectDoesNotExist:
+            return HttpResponse(f"That ID does not exist", status=status.HTTP_400_BAD_REQUEST)
 
 
 @csrf_exempt
@@ -39,7 +42,10 @@ def update_person(request):
     if request.method == "PUT":
         data = JSONParser().parse(request)
         person_id = data["id"]
-        person = Person.objects.get(id=person_id)
+        try:
+            person = Person.objects.get(id=person_id)
+        except ObjectDoesNotExist:
+            return HttpResponse(f"That person does not exist", status=status.HTTP_400_BAD_REQUEST)
         serialized = PeopleSerializer(person, data=data)
         if serialized.is_valid():
             serialized.save()
