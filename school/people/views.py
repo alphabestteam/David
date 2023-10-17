@@ -26,14 +26,12 @@ def add_person(request):
 
 
 @csrf_exempt
-def delete_person(request):
+def delete_person(request, id):
     if request.method == "GET":
-        data = JSONParser().parse(request)
-        person_id = data["id"]
-        person = Person.objects.get(id=person_id)
+        person = Person.objects.get(id=id)
         person.delete()
-        return HttpResponse(f"Successfully deleted person: {person_id}", status=status.HTTP_200_OK)
-    return HttpResponse(f"request not correct method. got {request.method} instead of POST")
+        return HttpResponse(f"Successfully deleted person with ID: {id}", status=status.HTTP_200_OK)
+    return HttpResponse(f"request not correct method. got {request.method} instead of GET", status=status.HTTP_400_BAD_REQUEST)
 
 
 @csrf_exempt
