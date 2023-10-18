@@ -14,6 +14,9 @@ class PersonSerializer(serializers.ModelSerializer):
         instance.save()
         return instance
 
+    def get_parents(self, instance):
+        return ParentSerializer(instance.parents.all(), many=True).data
+
 
 class ParentSerializer(PersonSerializer):
     class Meta:

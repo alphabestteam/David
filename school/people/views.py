@@ -1,6 +1,7 @@
 import datetime
 
 from django.core.exceptions import ObjectDoesNotExist
+from django.db.models import Q
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import Person, Parent
@@ -8,14 +9,16 @@ from .serializers import PersonSerializer, ParentSerializer
 from rest_framework.parsers import JSONParser
 from rest_framework import status
 
-'''Person API Functions'''
+'''
+Person API Functions
+'''
 
 
 @csrf_exempt
 def get_all_people(request):
     if request.method == "GET":
-        person = Person.objects.all()
-        serializer = PersonSerializer(person, many=True)
+        people = Person.objects.all()
+        serializer = PersonSerializer(people, many=True)
         return JsonResponse(serializer.data, safe=False, status=status.HTTP_200_OK)
     return HttpResponse("Incorrect method type", status=status.HTTP_400_BAD_REQUEST)
 
@@ -59,7 +62,9 @@ def update_person(request):
                             status=status.HTTP_400_BAD_REQUEST)
 
 
-'''Parent API Functions'''
+'''
+Parent API Functions
+'''
 
 
 @csrf_exempt
@@ -142,20 +147,85 @@ def get_parent_info(request, parent_id):
             return HttpResponse("Error: That Parent doesnt exist", status=status.HTTP_400_BAD_REQUEST)
 
         return JsonResponse({"Parent": parent_data, "Children": children}, safe=False, status=status.HTTP_200_OK)
+    return HttpResponse(f"Error: Received method type {request.method} instead of method type PUT",
+                        status=status.HTTP_400_BAD_REQUEST)
 
 
 @csrf_exempt
 def get_rich_children(request):
     if request.method == "GET":
-        rich_parents = Parent.objects.filter(salary__gtea=50000)
-        rich_children = ParentSerializer(rich_parents).data["children"]
-        print(rich_children)
-        for child_id in rich_children:
-            child = Person.objects.get(id=child_id)
-            child_age = datetime.datetime.now().year - child.birth_date.year
-            if child_age < 18:
-                rich_children.remove(child_id)
-        return JsonResponse({"Rich Children": rich_children}, safe=False, status=status.HTTP_200_OK)
+        cutoff_age = datetime.datetime.now().year - 18
+        rich_children_query = Person.objects.filter(Q(parents__salary__gte=50000) & Q(birth_date__year__lte=cutoff_age))
+        rich_children_data = [PersonSerializer(rich_child).data for rich_child in rich_children_query]
 
-# @csrf_exempt
-# def
+        return JsonResponse({"Rich Children": rich_children_data}, safe=False, status=status.HTTP_200_OK)
+    return HttpResponse(f"Error: Received method type {request.method} instead of method type PUT",
+                        status=status.HTTP_400_BAD_REQUEST)
+
+
+@csrf_exempt
+def get_parents_from_child(request, child_id):
+    if request.method == "GET":
+        try:
+            child = Person.objects.get(id=child_id)
+        except ObjectDoesNotExist:
+            return HttpResponse("Error: That ID does not exist", status=status.HTTP_400_BAD_REQUEST)
+        # Without serializer
+        # parents = ParentSerializer(child.parents.all(), many=True).data
+        # return JsonResponse({"Parents": parents}, safe=False, status=status.HTTP_200_OK)
+
+        # With Serializer
+        parents = PersonSerializer().get_parents(child)
+        return JsonResponse({"Parents": parents}, safe=False, status=status.HTTP_200_OK)
+
+    return HttpResponse(f"Error: Received method type {request.method} instead of method type PUT",
+                        status=status.HTTP_400_BAD_REQUEST)
+
+
+@csrf_exempt
+def get_children_from_parent(request, parent_id):
+    if request.method == "GET":
+        try:
+            parent = Parent.objects.get(id=parent_id)
+        except ObjectDoesNotExist:
+            return HttpResponse("Error: That ID does not exist", status=status.HTTP_400_BAD_REQUEST)
+
+        children = PersonSerializer(parent.children.all(), many=True).data
+        return JsonResponse({"Children": children}, safe=False, status=status.HTTP_200_OK)
+    return HttpResponse(f"Error: Received method type {request.method} instead of method type PUT",
+                        status=status.HTTP_400_BAD_REQUEST)
+
+
+@csrf_exempt
+def get_grandparents(request, person_id):
+    if request.method == "GET":
+        try:
+            person = Person.objects.get(id=person_id)
+        except ObjectDoesNotExist:
+            return HttpResponse("Error: That ID does not exist", status=status.HTTP_400_BAD_REQUEST)
+        grandparents = []
+        for parent in person.parents.all():
+            for grandparent in parent.parents.all():
+                grandparents.append(grandparent)
+        grandparents_data = ParentSerializer(grandparents, many=True).data
+        return JsonResponse({"GrandParents": grandparents_data}, safe=False, status=200)
+    return HttpResponse(f"Error: Received method type {request.method} instead of method type PUT",
+                        status=status.HTTP_400_BAD_REQUEST)
+
+
+@csrf_exempt
+def get_siblings(request, person_id):
+    if request.method == "GET":
+        try:
+            person = Person.objects.get(id=person_id)
+        except ObjectDoesNotExist:
+            return HttpResponse("Error: That ID does not exist", status=status.HTTP_400_BAD_REQUEST)
+        siblings = []
+        for parent in person.parents.all():
+            for sibling in parent.children.all():
+                if sibling != person:
+                    siblings.append(sibling)
+        siblings_data = PersonSerializer(siblings, many=True).data
+        return JsonResponse({"Siblings": siblings_data}, safe=False, status=200)
+    return HttpResponse(f"Error: Received method type {request.method} instead of method type PUT",
+                        status=status.HTTP_400_BAD_REQUEST)

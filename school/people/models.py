@@ -14,5 +14,6 @@ class Person(models.Model):
 
 class Parent(Person):
     work_place = models.CharField(max_length=100)
-    salary = models.DecimalField(max_digits=6, decimal_places=2)
-    children = models.ManyToManyField(Person, related_name="Children", default=[])
+    salary = models.DecimalField(max_digits=8, decimal_places=2, default=0.00)
+    children = models.ManyToManyField(Person, related_name="parents", default=[])
+
