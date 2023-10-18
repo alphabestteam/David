@@ -2,7 +2,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import Person
-from .serializers import PeopleSerializer
+from .serializers import PersonSerializer
 from rest_framework.parsers import JSONParser
 from rest_framework import status
 
@@ -10,16 +10,17 @@ from rest_framework import status
 # Create your views here.
 @csrf_exempt
 def get_all_people(request):
-    people = Person.objects.all()
-    serializer = PeopleSerializer(people, many=True)
-    return JsonResponse(serializer.data, safe=False, status=status.HTTP_200_OK)
+    if request.method == "GET":
+        people = Person.objects.all()
+        serializer = PersonSerializer(people, many=True)
+        return JsonResponse(serializer.data, safe=False, status=status.HTTP_200_OK)
 
 
 @csrf_exempt
 def add_person(request):
     if request.method == "POST":
         data = JSONParser().parse(request)
-        serialized = PeopleSerializer(data=data)
+        serialized = PersonSerializer(data=data)
         if serialized.is_valid():
             serialized.save()
             return HttpResponse("Person was successfully added to the DB", status=status.HTTP_201_CREATED)
@@ -46,9 +47,9 @@ def update_person(request):
             person = Person.objects.get(id=person_id)
         except ObjectDoesNotExist:
             return HttpResponse(f"That person does not exist", status=status.HTTP_400_BAD_REQUEST)
-        serialized = PeopleSerializer(person, data=data)
+        serialized = PersonSerializer(person, data=data)
         if serialized.is_valid():
-            serialized.save()
+            serialized.update()
             return HttpResponse("Successfully updated the person", status=status.HTTP_200_OK)
         return HttpResponse("Error: Updated details for person dont meet the requirements",
                             status=status.HTTP_400_BAD_REQUEST)
