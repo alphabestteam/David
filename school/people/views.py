@@ -49,7 +49,7 @@ def update_person(request):
             return HttpResponse(f"That person does not exist", status=status.HTTP_400_BAD_REQUEST)
         serialized = PersonSerializer(person, data=data)
         if serialized.is_valid():
-            serialized.update()
+            serialized.update(person, data)
             return HttpResponse("Successfully updated the person", status=status.HTTP_200_OK)
         return HttpResponse("Error: Updated details for person dont meet the requirements",
                             status=status.HTTP_400_BAD_REQUEST)
