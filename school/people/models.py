@@ -10,3 +10,9 @@ class Person(models.Model):
 
     def __str__(self):
         return f"Name: {self.name}, ID: {self.id}, Birth Date: {self.birth_date}, City: {self.city}"
+
+
+class Parent(Person):
+    work_place = models.CharField(max_length=100)
+    salary = models.DecimalField(max_digits=6, decimal_places=2)
+    children = models.ManyToManyField(Person, related_name="Children", default=[])
