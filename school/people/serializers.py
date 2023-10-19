@@ -24,7 +24,7 @@ class ParentSerializer(PersonSerializer):
         fields = "__all__"
 
     def update(self, instance, validated_data):
-        instance.work = validated_data.get("work_place", instance.work_place)
-        instance.baseSalary = validated_data.get("salary", instance.salary)
+        instance.work = validated_data.get("work", instance.work)
+        instance.baseSalary = validated_data.get("baseSalary", instance.baseSalary)
         super(PersonSerializer, self).update(instance, validated_data)
         return instance
