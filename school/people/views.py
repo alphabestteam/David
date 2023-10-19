@@ -108,7 +108,7 @@ def update_parent(request):
             return HttpResponse(f"That parent does not exist", status=status.HTTP_400_BAD_REQUEST)
         serialized = ParentSerializer(parent, data=data)
         if serialized.is_valid():
-            serialized.save()
+            serialized.update(parent, data)
             return HttpResponse("Successfully updated the parent", status=status.HTTP_200_OK)
         return HttpResponse("Error: the updated details for parent dont meet the requirements",
                             status=status.HTTP_400_BAD_REQUEST)
@@ -155,7 +155,9 @@ def get_parent_info(request, parent_id):
 def get_rich_children(request):
     if request.method == "GET":
         cutoff_age = datetime.datetime.now().year - 18
-        rich_children_query = Person.objects.filter(Q(parents__salary__gte=50000) & Q(birth_date__year__lte=cutoff_age))
+        print(cutoff_age)
+
+        rich_children_query = Person.objects.filter(Q(parents__salary__gte=50000) & Q(birth_date__year__gte=cutoff_age))
         rich_children_data = [PersonSerializer(rich_child).data for rich_child in rich_children_query]
 
         return JsonResponse({"Rich Children": rich_children_data}, safe=False, status=status.HTTP_200_OK)
