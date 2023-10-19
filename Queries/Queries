@@ -1,0 +1,20 @@
+1. Parent.objects.all().values()
+
+2. Parent.objects.filter(work="Google").count()
+
+3. Parent.objects.all().order_by('children__birthDate').values()
+
+4. Person.objects.all().order_by(name__contains='i')
+
+5. Person.objects.filter(Q(homeTown="Raanana") or Q(homeTown="Tel Aviv"))
+
+6. Parent.objects.aggregate(Avg('baseSalary')).values()
+
+7. Parent.objects.annotate(children_count=Count('children')).values('name', 'children_count')
+
+8. Parent.objects.annotate(children_count=Count('children')).aggregate(children_sum=Sum('children_count'))
+
+9. Parent.objects.filter(baseSalary=Parent.objects.aggregate(Max('baseSalary'))['baseSalary__max'])
+
+10. Person.objects.annotate(parents_total_salary=Sum('parents__baseSalary')).filter(parents_total_salary__gte=50000)
+
