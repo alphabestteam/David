@@ -1,0 +1,11 @@
+1. IntegerField is the correct choice for the model field type.
+
+2. We need to change the value in the models.py from DecimalField to IntegerField so that we can have an Int number as salary in the DB.
+   After changing the Field type we create a migration by running 'makemigrations' and that creates a new file in the migrations folder.
+   Before we run the 'migrate' command we need to make sure that the DB gets updated so that nothing crashes. To do this we need to create
+   a new function inside the migration file that we just created. This function will take the old value (decimal) and round it up to a full number.
+   To call this function before the migrate gets called we need to add a RunPython call in the Operations list thats inside the migration file.
+   The operation list works in chronological order meaning we need to put the RunPython before the 'AlterField' so that
+   we can change the DB values before it migrates.
+
+   Once we've prepared everything we can run migrate.
