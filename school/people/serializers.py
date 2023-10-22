@@ -9,8 +9,8 @@ class PersonSerializer(serializers.ModelSerializer):
 
     def update(self, instance, validated_data):
         instance.name = validated_data.get("name", instance.name)
-        instance.birthDate = validated_data.get("birth_date", instance.birthDate)
-        instance.homeTown = validated_data.get("city", instance.homeTown)
+        instance.birthDate = validated_data.get("birthDate", instance.birthDate)
+        instance.homeTown = validated_data.get("homeTown", instance.homeTown)
         instance.save()
         return instance
 
