@@ -19,6 +19,7 @@ urlpatterns = [
     path('getParentInfo/<parent_id>', views.get_parent_info, name="Get Parent Info"),
     path('getRichChildren/', views.get_rich_children, name="Get Rich Children"),
     path('getParentsFromChild/<child_id>', views.get_parents_from_child, name="Get Parent from Child"),
+    path('getChildrenFromParent/<parent_id>', views.get_children_from_parent, name="Get Children from Parent"),
     path('getGrandParents/<person_id>', views.get_grandparents, name="Get Children From Parent"),
     path('getSiblings/<person_id>', views.get_siblings, name="Get Siblings"),
 
