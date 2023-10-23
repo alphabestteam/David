@@ -1,0 +1,72 @@
+#Requests
+3. Query_params are parameters that are placed in the URL.
+   Query_params are usually used to filter data and are not required to be passed in the URL. Query_params are passed in the
+   URL after a '?' and are separated by a '&'.
+   Query_params are in the form of key=value.
+   Example: http://localhost:8000/api/book?author=Dovid
+
+
+#Responses
+4. Response allows us return different types like JSON, dict, lists and more. It also takes care
+   of the status code so we dont have to separately specify it.
+
+   HttpResponse is used to return a string and only a string and is not used to return JSON. It also does not take care
+   of the status code which we have to specify separately.
+
+
+#Views
+5. Function based views AKA FBV is a function based way of dealing with requests and responses in your view.
+   FBVs are more simple and straightforward and are easier to implement. When making a small project its recommended to use
+   FBVs instead of CBVs.
+   Something special about FBVs is they require explicit URL routing which makes small projects easier to understand.
+
+   Class based views AKA CBV is a class based way of dealing with requests and responses in your view.
+   CBVs is a newer way of dealing with requests and responses and is slightly more complicated than FBVs.
+   Typically CBVs are used in larger projects and are more reusable then FBVs.
+   CBVs are also more flexible and can be used in many different ways.
+   CBVs can be used with Mixins which are components that can be combined to create different functionality.
+
+6. By using the @api_view decorator we can specify which methods are allowed for a specific view.
+   Example: @api_view(['GET', 'POST']) will allow the view to only accept GET and POST requests.
+
+
+#Serializers
+7. The save() function knows depending on what was passed when creating the serializer.
+   If the serializer was created with an instance passed in then it will update the instance otherwise if you only pass in
+   the data then it will create a new instance and save it to the DB.
+
+
+8. We can get any errors that occurred when creating the serializer by calling serializer.errors.
+   serializer.errors will return a dictionary with the errors that occurred where the key is the field name and the value
+   will be a list of errors that occurred for that field.
+
+
+9. serializer.is_valid(raise_exception=True) will raise a 'ValidationError' exception if the serializer is not valid,
+   by default it returns a an HTTP 400 Bad Request response.
+   Using this method is better when you want to let the user know that the data they passed in is not valid, but if you
+   want to handle the error yourself then you shouldn't use this method.
+
+11. We can do this by adding the argument 'partial=True' this allows us to update only part of the object meaning that we
+    only need to pass what we want to be changed.
+    There are more ways of doing this like using the objects.update function to update a specific part of an object.
+
+12. Depth controls how deep the relations that object has. It basically controls the amount nested objects inside an object.
+    For example if we have an Author and set the depth to 1 then we can have another object called Book which is related to the author.
+
+14. Read_only_fields are fields that are only readable and not writeable. This we shouldnt be able to alter that field.
+
+15. SerializerMethodField is a ReadOnlyField that gets its value by calling a method on the serializer class its attached to.
+    Its used for adding data to the serialized object.
+
+
+#Serializer relations
+16. SlugRelatedField is a field used to represent related objects fields with names that are unique instead of the full related object.
+    Instead of taking the whole object like doing in depth we can simply bring a field that we need.
+
+17. select_related and prefetch_related are used to optimize DB queries.
+
+    select_related is used to retrieve related objects by using JOIN and is used for one to one and many to one relationships.
+    prefetch_related is used to retrieve related objects in a separate query. It is used for many to many and many to one relationships.
+
+19. DRF doest have a good solution for nested serializers and models so we have to use a third party package called
+    django-rest-framework-recursive which allows us to use nested serializers and models in a way more efficiency and easier way.
