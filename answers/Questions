@@ -1,0 +1,12 @@
+1. A - Speeds up performance by routing traffic to web servers in a way that increases the overall speed.
+   B - open-source
+   C - low resource consumption
+
+2. First we go to the conf file and change the port to 8000 (8080 was being used on my pc so needed to change it to 8000 instead)
+   Once we change everything we want in the conf file we can run the exe to start the server. Since the root goes straight to the
+   html folder then to the index.html all we need to do is replace the existing index with the hello world.
+
+3. Had no issues changing the background color to black or the title to blue.
+
+
+
