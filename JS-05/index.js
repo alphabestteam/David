@@ -6,9 +6,9 @@ function checkScore() {
         const resultDiv = document.createElement("div")
         const results = document.createElement("p")
         results.id = "result-div"
-        results.innerText = `Numeric Score: ${testScore}\n` +
-            `Alphabetical Score: ${alphabeticalScore}\n` +
-            `Score Sentence: ${scoreSentence}`
+        results.innerText = `Numeric Score: ${testScore}
+            Alphabetical Score: ${alphabeticalScore}
+            Score Sentence: ${scoreSentence}`
 
         document.body.appendChild(resultDiv)
         resultDiv.appendChild(results)
