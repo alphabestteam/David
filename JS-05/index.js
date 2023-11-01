@@ -14,7 +14,8 @@ function checkScore() {
         resultDiv.appendChild(results)
 
     } else {
-        alert(`The score you entered: ${testScore}\nTest scores must only be numeric and between 0-100`)
+        alert(`The score you entered: ${testScore}
+               Test scores must only be numeric and between 0-100`)
     }
 
 }
