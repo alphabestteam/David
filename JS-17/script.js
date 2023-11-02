@@ -17,6 +17,25 @@ function createHeading(color, text){
 }
 
 function headingFactory(color){
-    //implement the closure here and use it. 
-    //keep in mind you return a function. think about how one should use what this function will return.
+    function createHeading(text){
+        const heading = document.createElement('h1');
+        heading.setAttribute('style', 'color:' + color)
+        heading.textContent = text
+        return heading
+    }
+    return createHeading
 }
+
+const createHeaderRed = headingFactory("red")
+const createHeaderBlue = headingFactory("blue")
+
+const usingFactory1 = createHeaderRed("using factory 1")
+const usingFactory2 = createHeaderBlue("using factory 2")
+
+main.appendChild(usingFactory1)
+main.appendChild(usingFactory2)
+
+
+// higher-order functions simplify our code and makes it way easier to read.
+// It also is very good for making functions more dynamic in the way they are used which leads to overall better code.
+// Makes the code more reusable.
