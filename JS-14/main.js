@@ -29,20 +29,31 @@ const loremIpsumStr = "Lorem ipsum dolor sit amet consectetur adipiscing elit," 
 const loremArr = loremIpsumStr.split(" ")
 const colors = ["red", "orange", "yellow", "greenyellow", "lightblue", "mediumpurple"]
 
-function getRandomColor(arr) {
+const getRandomColor = () => {
     if (colors.length === 0) return;
-    const randomIndex = Math.round(Math.random() * (colors.length - 1))
-    return arr[randomIndex]
+    const r = Math.round(Math.random() * 256)
+    const g = Math.round(Math.random() * 256)
+    const b = Math.round(Math.random() * 256)
+    return `rgb(${r}, ${g}, ${b})`
 }
 
 const randomWordsElement = document.getElementById("random-words")
 
 loremArr.forEach(word => {
     const span = document.createElement("span")
-    const style = "background-color: " + getRandomColor(colors)
+    const style = "background-color: " + getRandomColor()
     span.setAttribute("style", style)
     span.textContent = word
     span.className = "random-word"
     randomWordsElement.appendChild(span)
 })
 
+document.getElementById("background-change-btn").addEventListener('click', changeBackgroundColor)
+
+function changeBackgroundColor() {
+    const loremWordsElements = document.querySelectorAll('[class=random-word]')
+    loremWordsElements.forEach(element => {
+        const style = "background-color: " + getRandomColor()
+        element.setAttribute("style", style)
+    })
+}
