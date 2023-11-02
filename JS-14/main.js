@@ -31,29 +31,26 @@ const colors = ["red", "orange", "yellow", "greenyellow", "lightblue", "mediumpu
 
 const getRandomColor = () => {
     if (colors.length === 0) return;
-    const r = Math.round(Math.random() * 256)
-    const g = Math.round(Math.random() * 256)
-    const b = Math.round(Math.random() * 256)
-    return `rgb(${r}, ${g}, ${b})`
+    return Math.round(Math.random() * 16777215).toString(16).padStart(6, '0') //This reason we use padStart is in case it returns something less than the length 6 we want to add 0's till it reaches the length of 6.
 }
 
 const randomWordsElement = document.getElementById("random-words")
 
 loremArr.forEach(word => {
     const span = document.createElement("span")
-    const style = "background-color: " + getRandomColor()
+    const style = "background-color: #" + getRandomColor()
     span.setAttribute("style", style)
     span.textContent = word
     span.className = "random-word"
     randomWordsElement.appendChild(span)
 })
 
-document.getElementById("background-change-btn").addEventListener('click', changeBackgroundColor)
-
 function changeBackgroundColor() {
     const loremWordsElements = document.querySelectorAll('[class=random-word]')
     loremWordsElements.forEach(element => {
-        const style = "background-color: " + getRandomColor()
+        const style = "background-color: #" + getRandomColor()
         element.setAttribute("style", style)
     })
 }
+
+document.getElementById("background-change-btn").addEventListener('click', changeBackgroundColor)
