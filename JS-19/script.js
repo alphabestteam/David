@@ -43,7 +43,7 @@ function questionE() {
 
 // questionA()
 // questionB()
-questionC()
+// questionC()
 // questionD()
 // questionE()
 
