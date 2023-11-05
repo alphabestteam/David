@@ -71,6 +71,7 @@ function identifySpecies(jellyfish) {
 
 //The Adventure Starts Here! 
 function startAdventure(jellyfishDays) {
+    console.log("Let's go jellyfishing!")
     for (const jellyfishBatch of jellyfishDays) {
         let score = 0
         for (const jellyfish of jellyfishBatch) {
