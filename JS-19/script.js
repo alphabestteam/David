@@ -1,5 +1,5 @@
 function sequenceA() {
-    setTimeout(_ => console.log('Sponge'), 0);
+    setTimeout(_ => console.log('Sponge'), 3000);
     console.log("Bob");
 }
 
@@ -43,9 +43,11 @@ function questionE() {
 
 // questionA()
 // questionB()
-// questionC()
+questionC()
 // questionD()
-questionE()
+// questionE()
+
+//questionA();
 //      First the console.log will be executed then the TimeOut.
 //      Even tough the timeout was set to 0 milliseconds it still gets scheduled to execute when the queue is empty,
 //      meaning were still going to need to wait for console.log to be executed before we go and execute the timeout callback function.
