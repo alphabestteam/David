@@ -1,30 +1,21 @@
-const quotes = [
-    "I'm ready, I'm ready, I'm ready! - SpongeBob SquarePants",
+const quotes = ["I'm ready, I'm ready, I'm ready! - SpongeBob SquarePants",
     "F is for friends who do stuff together, U is for you and me, N is for anywhere and anytime at all! - SpongeBob SquarePants",
-    "I'm not just ready, I'm ready Freddy! - SpongeBob SquarePants",
-    "Remember, licking doorknobs is illegal on other planets. - SpongeBob SquarePants",
+    "I'm not just ready, I'm ready Freddy! - SpongeBob SquarePants", "Remember, licking doorknobs is illegal on other planets. - SpongeBob SquarePants",
     "The inner machinations of my mind are an enigma. - Patrick Star",
-    "I can't hear you, it's too dark in here! - Patrick Star",
-    "I'm ugly and I'm proud! - SpongeBob SquarePants",
+    "I can't hear you, it's too dark in here! - Patrick Star", "I'm ugly and I'm proud! - SpongeBob SquarePants",
     "I'll have you know that I stubbed my toe last week while watering my spice garden and I only cried for 20 minutes. - Squidward Tentacles",
-    "Once there was an ugly barnacle. He was so ugly that everyone died. The end. - Patrick Star",
-    "Is mayonnaise an instrument? - Patrick Star",
-    "Can you give SpongeBob his brain back? - Patrick Star",
-    "I guess hibernation is the opposite of beauty sleep. - Squidward Tentacles",
+    "Once there was an ugly barnacle. He was so ugly that everyone died. The end. - Patrick Star", "Is mayonnaise an instrument? - Patrick Star",
+    "Can you give SpongeBob his brain back? - Patrick Star", "I guess hibernation is the opposite of beauty sleep. - Squidward Tentacles",
     "I know of a place where you never get harmed. A magical place with magical charms. Indoors! Indoors! Indoors! - SpongeBob SquarePants",
     "I can't believe I'm finally wearing a Krusty Krab hat. Promotion, here I come! - SpongeBob SquarePants",
     "I'll take a double triple bossy deluxe on a raft, 4x4, animal-style, extra shingles with a shimmy and a squeeze, light axle grease, make it cry, burn it, and let it swim. - Bubble Bass",
-    "Sandy: What do you usually do when I'm gone? SpongeBob: Wait for you to come back.",
-    "SpongeBob: Don't worry, Mr. Krabs, I'll have you out of there faster than a toupee in a hurricane!",
+    "Sandy: What do you usually do when I'm gone? SpongeBob: Wait for you to come back.", "SpongeBob: Don't worry, Mr. Krabs, I'll have you out of there faster than a toupee in a hurricane!",
     "SpongeBob: I know of a place where you never get harmed. A magical place with magical charm. Indoors. Indoors. Indoors. - Squidward: What's that? - SpongeBob: Outdoors.",
-    "SpongeBob: Can I be excused for the rest of my life?",
-    "SpongeBob: I'm not just ready, I'm ready Freddy!",
-    "SpongeBob: You don't need a license to drive a sandwich.",
+    "SpongeBob: Can I be excused for the rest of my life?", "SpongeBob: I'm not just ready, I'm ready Freddy!", "SpongeBob: You don't need a license to drive a sandwich.",
     "SpongeBob: Goodbye everyone, I'll remember you all in therapy.",
     "SpongeBob: Patrick, I don't think Wumbo is a real word. Patrick: Come on, SpongeBob, we're best friends. I would never call you a Wumbologist if I didn't think you were one.",
     "SpongeBob: I'm a Goofy Goober, yeah. You're a Goofy Goober, yeah. We're all Goofy Goobers, yeah. Goofy, goofy, goober, goober, yeah!",
-    "SpongeBob: Once there was an ugly barnacle. He was so ugly that everyone died. The end."
-];
+    "SpongeBob: Once there was an ugly barnacle. He was so ugly that everyone died. The end."];
 
 let gameRunning = false
 let startTime = null
@@ -141,36 +132,71 @@ function endGame() {
                                  With ${accuracy}% accuracy`
 
     saveDataLocally(wordCount, parseFloat(overAllSeconds), parseFloat(wordsPerMin), parseFloat(accuracy))
+    displayScoreBoard()
 }
 
-function saveDataLocally(wordCount, overAllSeconds, wordsPerMin, accuracy){
-    // localStorage.clear()
+function displayScoreBoard() {
+    const scoreBoardElement = document.getElementById('scoreboard')
+    scoreBoardElement.innerHTML = ''
 
-    const score = parseFloat((wordsPerMin * accuracy / 10).toFixed(2))
-    const gameData = getLocalGameData()
-    const currGameData = {
-        wordCount: wordCount,
-        overAllSeconds: overAllSeconds,
-        wordsPerMin: wordsPerMin,
-        accuracy: accuracy,
-        score: score
+    const localGamesData = getLocalGamesData()
+    const gamesFilteredByScore = localGamesData.sort((a, b) => b.score - a.score)
+    console.log(gamesFilteredByScore)
+
+    const specialRank = ['first-place', 'second-place', 'third-place']
+
+    for (let i = 0; i < gamesFilteredByScore.length; i++) {
+
+        const tableRow = document.createElement('tr')
+        const tdRank = document.createElement('td')
+
+        if (specialRank[i]) tableRow.classList.add(specialRank[i])
+
+
+        tdRank.textContent = `${i + 1}`
+        tableRow.appendChild(tdRank)
+
+        Object.values(gamesFilteredByScore[i]).forEach(gameData => {
+            const tableData = document.createElement('td')
+            tableData.textContent = `${gameData}`
+            tableRow.appendChild(tableData)
+        })
+        scoreBoardElement.appendChild(tableRow)
     }
-    console.log(typeof(gameData))
-    gameData.push(currGameData)
-    console.log(gameData)
-    localStorage.setItem('games', gameData)
-    console.log(getLocalGameData())
 }
 
-const getLocalGameData = ()=>{
-    const oldGames = localStorage.getItem('games')
-    return JSON.parse(oldGames) || []
+function saveDataLocally(wordCount, overAllSeconds, wordsPerMin, accuracy) {
+    const score = parseFloat((wordsPerMin * accuracy / 10).toFixed(2))
+    const gameData = getLocalGamesData()
+    const currGameData = {
+        "wordCount": wordCount,
+        "overAllSeconds": overAllSeconds,
+        "wordsPerMin": wordsPerMin,
+        "accuracy": accuracy,
+        "score": score
+    }
+    gameData.push(currGameData)
+    localStorage.setItem("games", JSON.stringify(gameData))
 }
+
+
+// Get the current local games. If its null then return an empty array
+const getLocalGamesData = () => JSON.parse(localStorage.getItem('games')) || []
+
 
 document.getElementById('input').addEventListener('input', checkInput)
 document.getElementById('start-btn').addEventListener('click', startGame)
+
+
+document.getElementById('clear-scoreboard-btn').addEventListener('click', () => {
+    localStorage.clear()
+    displayScoreBoard()
+})
 document.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
         document.getElementById('start-btn').focus()
     }
 })
+
+// init scoreboard
+displayScoreBoard()

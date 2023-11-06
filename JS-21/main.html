@@ -13,10 +13,29 @@
         <p>Type the words as fast as you can!</p>
         <p class="quote-display" id="quote"></p>
         <input type="text" class="text-input" autocomplete="off" id="input">
+        <p>Press 'Enter' to start / restart</p>
         <br>
         <button class="start-btn" id="start-btn">Start</button>
+        <button class="start-btn" id="clear-scoreboard-btn">Clear Scoreboard</button>
         <p id="timer"></p>
         <p id="result"></p>
+
+        <table>
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Words</th>
+                <th>Time</th>
+                <th>WPM</th>
+                <th>Accuracy</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody id="scoreboard">
+              <!-- High scores will be displayed here -->
+            </tbody>
+          </table>
+          
     </div>
     <script src="script.js"></script>
 </body>
