@@ -1,4 +1,6 @@
 from django.db import models
+from users.models import User
+from chats.models import Chat
 
 
 # Create your models here.
@@ -28,4 +30,3 @@ class EventFile(Event):
 
     def __str__(self):
         return f"{self.title}"
-
