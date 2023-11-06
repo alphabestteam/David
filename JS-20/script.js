@@ -74,7 +74,7 @@ function startGame() {
     if (input.disabled) input.disabled = false
     input.focus()
 
-    // Start time and timer interval activation
+    // Start time and interval
     startTime = new Date()
     timerInterval = setInterval(updateTimer, 1000)
 
@@ -129,24 +129,20 @@ function endGame() {
     const overAllTime = endTime - startTime;
     const overAllSeconds = (overAllTime / 1000).toFixed(2);
 
-    const quoteElement = Array.from(document.getElementsByClassName('letter'));
-    const wordCount = document.getElementById('quote').textContent.split(" ");
-    const wordsPerMin = ((wordCount.length / (overAllSeconds / 60)).toFixed(2))
-
     const resultElement = document.getElementById('result');
-    const badChars = quoteElement.filter(element => {
-        return element.classList.contains('incorrect');
-    });
-    const goodChars = quoteElement.filter(element => {
-        return element.classList.contains('correct');
-    });
+    const letterElements = Array.from(document.getElementsByClassName('letter'));
+    const wordCount = document.getElementById('quote').textContent.split(" ").length;
+    const wordsPerMin = ((wordCount / (overAllSeconds / 60)).toFixed(2))
+
+    const badChars = letterElements.filter(element => element.classList.contains('incorrect'));
+    const goodChars = letterElements.filter(element => element.classList.contains('correct'));
     const accuracy = ((goodChars.length / (goodChars.length + badChars.length)) * 100).toFixed(2);
 
 
-    resultElement.textContent = `You typed ${wordCount.length} words in ${overAllSeconds} seconds.
-    Your speed is ${wordsPerMin} wpm.
-    With ${accuracy}% accuracy`;
-
+    resultElement.textContent = `You typed ${wordCount} words
+                                 in ${overAllSeconds} seconds.
+                                 Your speed is ${wordsPerMin} wpm.
+                                 With ${accuracy}% accuracy`
 
 }
 
