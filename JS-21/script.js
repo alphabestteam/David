@@ -146,12 +146,8 @@ function endGame() {
 function saveDataLocally(wordCount, overAllSeconds, wordsPerMin, accuracy){
     // localStorage.clear()
 
-    let oldGameData = localStorage.getItem('games')
-
-    // let existingGameData =
-
     const score = parseFloat((wordsPerMin * accuracy / 10).toFixed(2))
-
+    const gameData = getLocalGameData()
     const currGameData = {
         wordCount: wordCount,
         overAllSeconds: overAllSeconds,
@@ -159,14 +155,16 @@ function saveDataLocally(wordCount, overAllSeconds, wordsPerMin, accuracy){
         accuracy: accuracy,
         score: score
     }
-    let newGameData
-    if (!oldGameData){
-        newGameData = currGameData
-    }else{
-        newGameData = "{"+ oldGameData + ", " + JSON.stringify(currGameData) + "}"
-    }
-    console.log(newGameData)
-    localStorage.setItem('games', JSON.stringify(newGameData))
+    console.log(typeof(gameData))
+    gameData.push(currGameData)
+    console.log(gameData)
+    localStorage.setItem('games', gameData)
+    console.log(getLocalGameData())
+}
+
+const getLocalGameData = ()=>{
+    const oldGames = localStorage.getItem('games')
+    return JSON.parse(oldGames) || []
 }
 
 document.getElementById('input').addEventListener('input', checkInput)
