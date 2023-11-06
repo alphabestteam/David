@@ -140,8 +140,34 @@ function endGame() {
                                  Your speed is ${wordsPerMin} wpm.
                                  With ${accuracy}% accuracy`
 
+    saveDataLocally(wordCount, parseFloat(overAllSeconds), parseFloat(wordsPerMin), parseFloat(accuracy))
 }
 
+function saveDataLocally(wordCount, overAllSeconds, wordsPerMin, accuracy){
+    // localStorage.clear()
+
+    let oldGameData = localStorage.getItem('games')
+
+    // let existingGameData =
+
+    const score = parseFloat((wordsPerMin * accuracy / 10).toFixed(2))
+
+    const currGameData = {
+        wordCount: wordCount,
+        overAllSeconds: overAllSeconds,
+        wordsPerMin: wordsPerMin,
+        accuracy: accuracy,
+        score: score
+    }
+    let newGameData
+    if (!oldGameData){
+        newGameData = currGameData
+    }else{
+        newGameData = "{"+ oldGameData + ", " + JSON.stringify(currGameData) + "}"
+    }
+    console.log(newGameData)
+    localStorage.setItem('games', JSON.stringify(newGameData))
+}
 
 document.getElementById('input').addEventListener('input', checkInput)
 document.getElementById('start-btn').addEventListener('click', startGame)
