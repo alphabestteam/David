@@ -49,17 +49,13 @@ function startGame() {
     if (gameRunning) restartTimer()
 
     gameRunning = true
-
-
     const quoteElement = document.getElementById('quote')
     const randomQuote = getRandomQuote()
     const quoteWords = randomQuote.split("")
     const input = document.getElementById('input')
 
-    // Reset the quoteElement to have no children elements
+    // Reset elements to have no values/children
     quoteElement.innerHTML = ''
-
-    // Clear input value for clean start
     input.value = ''
 
     // Create and append span elements for each letter
@@ -71,7 +67,9 @@ function startGame() {
     })
 
     // Focus on the input, so he doesn't need to click the input to start.
-    if (input.disabled) input.disabled = false
+    if (input.disabled) {
+        input.disabled = false
+    }
     input.focus()
 
     // Start time and interval
@@ -85,18 +83,16 @@ function startGame() {
 function checkInput() {
     const userInput = document.getElementById('input').value
     const letterElements = document.getElementsByClassName('letter')
-
     setCorrectIncorrectChars(userInput, letterElements)
 
-    if (userInput.length === letterElements.length) endGame(userInput)
+    if (userInput.length === letterElements.length) {
+        endGame(userInput)
+    }
 }
 
 function setCorrectIncorrectChars(userInput, letterElements) {
-
-    const inputLength = userInput.length
-
     // Adds incorrect/correct classes to letters that match/don't match
-    for (let i = 0; i < inputLength; i++) {
+    for (let i = 0; i < userInput.length; i++) {
         if (letterElements[i].textContent === userInput[i]) {
             letterElements[i].classList.remove('incorrect')
             letterElements[i].classList.add('correct')
@@ -107,7 +103,7 @@ function setCorrectIncorrectChars(userInput, letterElements) {
     }
 
     // Removes all incorrect/correct markings for letters that aren't written in the input. (In case you try to delete a whole word at once)
-    for (let i = inputLength; i < letterElements.length; i++) {
+    for (let i = userInput.length; i < letterElements.length; i++) {
         letterElements[i].classList.remove('incorrect')
         letterElements[i].classList.remove('correct')
     }
