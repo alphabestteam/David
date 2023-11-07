@@ -1,18 +1,28 @@
 const mainHeading = document.getElementById("main-heading")
+
 console.log(mainHeading.id)
+
 console.log(mainHeading.className)
+
 console.log(mainHeading.classList)
+
 console.log(mainHeading.dataset)
+
 console.log(mainHeading.getAttribute("nonStandard"))
 mainHeading.classList.add("bg-lightcyan", "border")
+
 console.log(mainHeading.textContent)
+
 console.log(mainHeading.textContent.trim())
+
 mainHeading.textContent = "Hello there pearl!"
 
 const bobsSpan = document.createElement('span')
 bobsSpan.innerHTML = '<br> its me spongebob!'
 mainHeading.appendChild(bobsSpan)
+
 console.log(mainHeading)
+
 const cloned = mainHeading.cloneNode(true)
 console.log(cloned)
 
@@ -27,6 +37,7 @@ const loremIpsumStr = "Lorem ipsum dolor sit amet consectetur adipiscing elit," 
     " integer placerat et turpis mi eros nec lobortis taciti, vehicula nisl litora tellus ligula porttitor metus."
 
 const loremArr = loremIpsumStr.split(" ")
+
 const colors = ["red", "orange", "yellow", "greenyellow", "lightblue", "mediumpurple"]
 
 function getRandomColor(arr) {
