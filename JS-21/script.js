@@ -141,7 +141,6 @@ function displayScoreBoard() {
 
     const localGamesData = getLocalGamesData()
     const gamesFilteredByScore = localGamesData.sort((a, b) => b.score - a.score)
-    console.log(gamesFilteredByScore)
 
     const specialRank = ['first-place', 'second-place', 'third-place']
 
