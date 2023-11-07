@@ -1,18 +1,10 @@
-const helloWorld = () => {
-    return "Hello World"
-}
+const helloWorld = () => "Hello World"
 
-const sayHi = (name) => {
-    return `Hello ${name}`
-}
+const sayHi = (name) => `Hello ${name}`
 
-const setSquared = (number) => {
-    return number * number
-}
+const setSquared = (number) => number * number
 
-const rectangleArea = (width, length) => {
-    return width * length
-}
+const rectangleArea = (width, length) => width * length
 
 const circleValues = (radius) => {
     const circumference = 2 * Math.PI * radius
@@ -27,12 +19,10 @@ const countVowels = (str) => {
     }).length;
 }
 
-const isSameLength = (arr1, arr2) => {
-    return arr1.size === arr2.size
-}
+const isSameLength = (arr1, arr2) => arr1.size === arr2.size
 
 const numberToArray = (number) => {
-    return number.toString().split("").map(num =>{
+    return number.toString().split("").map(num => {
         return parseInt(num)
     })
 }
@@ -43,10 +33,8 @@ const getTruthyFalsyArr = (myArr) => {
     })
 }
 
-const myArr = [1, "hello", true, 0, false,
-    ""
-    , " ", null, undefined, NaN,
-    2, "world", true, {}, [], 3, "foo", 'true', 'false', "bar"];
+const myArr = [1, "hello", true, 0, false, "", " ", null, undefined, NaN, 2, "world", true, {}, [], 3, "foo", 'true', 'false', "bar"];
+
 console.log(helloWorld());
 console.log(sayHi("Ephraim"));
 console.log(setSquared(4));
