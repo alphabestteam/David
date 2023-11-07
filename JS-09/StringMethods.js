@@ -5,46 +5,37 @@ let movieInfo = " Kung Fu Panda is a beloved animated movie about a clumsy, food
     "\nWith stunning animation, a heartwarming story, and a star-studded cast including Jack Black, Angelina Jolie, and Jackie Chan, Kung Fu Panda has become a timeless classic for all ages."
 
 
-function splitStringToArray(){
-    return movieInfo.split("")
-}
+const splitStringToArray = () => movieInfo.split("")
 
-function replaceMovieInfo(){
-    return movieInfo.replace("movie", "film")
-}
+const replaceMovieToFilm = () => movieInfo.replace("movie", "film")
 
-function replaceAllMovieInfo(){
-    return movieInfo.replaceAll("Bear", "Panda")
-}
+const replaceAllBearToPanda = () => movieInfo.replaceAll("Bear", "Panda")
 
-function toUpperCase(){
-    return movieInfo.toUpperCase()
-}
+const toUpperCase = () => movieInfo.toUpperCase()
 
-function toLowerCase(){
-    return movieInfo.toLowerCase()
-}
+const toLowerCase = () => movieInfo.toLowerCase()
 
-function findPoInStr(){
-    return movieInfo.search("Po")
-}
+const findPoInStr = () => movieInfo.search("Po")
 
-function startFromPo(){
-    return movieInfo.split("Po")[1]
-}
+const startFromPo = () => movieInfo.slice(findPoInStr())
 
-function removeWhiteSpaces(){
-    return movieInfo.trim()
-}
+const removeWhiteSpaces = () => movieInfo.trim()
 
-function getFromPoTillPeriod(){
-    return movieInfo.substring(movieInfo.indexOf("Po ")-1, movieInfo.indexOf("."))
-}
+const getFromPoTillPeriod = () => movieInfo.substring(movieInfo.indexOf("Po"), movieInfo.indexOf("."))
 
-function replaceAllWhitespaces(){
-    return movieInfo.trim().split(" ")
-}
 
-function endsWithAges(){
-    return movieInfo.endsWith("ages.")
-}
+const replaceAllWhitespaces = () => movieInfo.trim().split(" ")
+
+const endsWithAges = () => movieInfo.endsWith("ages.")
+
+console.log(splitStringToArray())
+console.log(replaceMovieToFilm())
+console.log(replaceAllBearToPanda())
+console.log(toUpperCase())
+console.log(toLowerCase())
+console.log(findPoInStr())
+console.log(startFromPo())
+console.log(removeWhiteSpaces())
+console.log(getFromPoTillPeriod())
+console.log(replaceAllWhitespaces())
+console.log(endsWithAges())
