@@ -8,26 +8,24 @@ List of endpoints:
 */
 
 let itemsObjects = null
-
+let USDollar = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+});
 
 createOrderSummaryList = () => {
     const orderSummary = document.getElementById('order-summary')
     const unorderedList = document.createElement('ul')
+
     unorderedList.setAttribute('id', 'order-list')
     orderSummary.appendChild(unorderedList)
 }
 
-createElementsAndDisplay = (items) => {
+createShoppingElementsAndDisplay = (items) => {
     const menuDiv = document.getElementById('menu')
     const itemKeys = Object.keys(items)
 
     itemKeys.forEach((item, index) => {
-        itemsObjects['items'][item]['quantity'] = 0
-        let USDollar = new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD',
-        });
-
         const itemName = item
         const itemPrice = items[item]['price']
         const formattedPrice = USDollar.format(itemPrice)
@@ -57,13 +55,7 @@ createElementsAndDisplay = (items) => {
         quantityInputEle.addEventListener('input', () => {
             const orderSummary = document.getElementById('order-summary')
             const orderList = document.getElementById('order-list')
-            const emptyOrder = orderSummary.getElementsByTagName('p')[0]
 
-            if (orderList.hasChildNodes()) {
-                emptyOrder.style.display = 'block'
-            } else {
-                emptyOrder.style.display = 'none'
-            }
 
             if (isNaN(parseInt(quantityInputEle.value))) return
 
@@ -71,26 +63,32 @@ createElementsAndDisplay = (items) => {
             const totalPrice = itemPrice * itemQuantity
             const formattedTotalPrice = USDollar.format(totalPrice)
 
-            let order = document.getElementById(`order-number-${index}`)
+            let orderedElement = document.getElementById(`order-number-${index}`)
 
-            if (!order) {
-                order = document.createElement('li')
-                order.classList.add('order-form')
-                order.setAttribute('id', `order-number-${index}`)
-                order.textContent = `${itemName} (${itemQuantity} x ${formattedPrice} = ${formattedTotalPrice})`
+            if (!orderedElement) {
+                orderedElement = document.createElement('li')
+                orderedElement.classList.add('order-form')
+                orderedElement.setAttribute('id', `order-number-${index}`)
+                orderedElement.textContent = `${itemName} (${itemQuantity} x ${formattedPrice} = ${formattedTotalPrice})`
 
-                orderList.appendChild(order)
+                orderList.appendChild(orderedElement)
             }
 
+            if (itemQuantity <= 0) {
+                orderList.removeChild(orderedElement)
+                itemsObjects["items"][item]['quantity'] = 0
 
-            if (itemQuantity < 0) {
-                orderList.removeChild(order)
-
-            } else if (order) {
+            } else if (orderedElement) {
                 itemsObjects["items"][item]['quantity'] = parseInt(itemQuantity)
-                order.textContent = `${itemName} (${itemQuantity} x ${formattedPrice} = ${formattedTotalPrice})`
+                orderedElement.textContent = `${itemName} (${itemQuantity} x ${formattedPrice} = ${formattedTotalPrice})`
             }
 
+            const emptyOrder = orderSummary.getElementsByTagName('p')[0]
+            if (!orderList.hasChildNodes()) {
+                emptyOrder.style.display = 'block'
+            } else {
+                emptyOrder.style.display = 'none'
+            }
         })
 
         itemContainerEle.appendChild(itemHeadingEle)
@@ -103,60 +101,116 @@ createElementsAndDisplay = (items) => {
 }
 
 function removeGifAndCreateMenuElements(items, createElementsAndDisplay) {
-    createOrderSummaryList()
-
     const loader = document.getElementById('loader')
     loader.style.display = "none"
+
+    createOrderSummaryList()
 
     itemsObjects = items
     createElementsAndDisplay(items.items)
 }
 
-fetch('http://localhost:8000/menu')
-    .then(res => res.json())
-    .then(res => removeGifAndCreateMenuElements(res, createElementsAndDisplay))
+function displayMostRecentOrder(orderData) {
+    const latestOrderInfoElement = document.getElementById('latest-order-info')
 
-document.getElementById('order-form').addEventListener('submit', (e) => {
-    e.preventDefault()
+    const notFoundElement = latestOrderInfoElement.getElementsByTagName('p')[0]
+    notFoundElement.style.display = 'none'
 
-    const orderSummary = document.getElementById('order-summary')
-    const orderList = document.getElementById('order-list')
+    let outerUlElement = document.getElementById('recent-order-list')
+    if (!outerUlElement) {
+        outerUlElement = document.createElement('ul')
+        outerUlElement.setAttribute('id', 'recent-order-list')
+    } else {
+        outerUlElement.innerHTML = ""
+    }
 
-    if (!orderList.hasChildNodes()) return
-    const ob = {}
-    const temp = []
-    Object.keys(itemsObjects.items).forEach(itemKey => {
+    latestOrderInfoElement.appendChild(outerUlElement)
+    orderData["items"].sort((a, b) => b.price - a.price)
+
+    Object.keys(orderData["items"]).forEach(key => {
+
+        const currItem = orderData["items"][key]
+        const name = currItem.name
+        const price = USDollar.format(currItem.price)
+        const description = currItem.description
+        const quantity = currItem.quantity
+        const id = currItem.id
+
+        const outerLiElement = document.createElement('li')
+        outerLiElement.textContent = `${name}`
+
+        const innerUlElement = document.createElement('ul')
+
+        const liPrice = document.createElement('li')
+        const liDesc = document.createElement('li')
+        const liQuantity = document.createElement('li')
+        const liId = document.createElement('li')
+
+
+        liPrice.textContent = `price: ${price}`
+        liDesc.textContent = `description: ${description}`
+        liQuantity.textContent = `quantity: ${quantity}`
+        liId.textContent = `ID: ${id}`
+
+        innerUlElement.appendChild(liPrice)
+        innerUlElement.appendChild(liDesc)
+        innerUlElement.appendChild(liQuantity)
+        innerUlElement.appendChild(liId)
+
+        outerLiElement.appendChild(innerUlElement)
+        outerUlElement.appendChild(outerLiElement)
+    })
+
+
+}
+
+noOrdersInOrderList = () => {
+    const orderList = document.getElementById('order-list') // Was created at the beginning of the code
+    return !orderList.hasChildNodes()
+}
+sendOutOrder = () => {
+
+    if (noOrdersInOrderList()) return
+
+    const orderObject = {}
+    const orderArray = []
+    Object.keys(itemsObjects["items"]).forEach(itemKey => {
         if (itemsObjects.items[itemKey]['quantity'] > 0) {
-            temp.push(itemsObjects.items[itemKey])
+            orderArray.push(itemsObjects.items[itemKey])
         }
     })
 
-    ob["items"] = temp
+    orderObject["items"] = orderArray
     fetch('http://localhost:8000/orders',
         {
             method: "POST",
             headers: new Headers({'content-type': 'application/json'}),
-            body: JSON.stringify(ob)
+            body: JSON.stringify(orderObject)
         }).then(res => res.json()).then(res => console.log(res))
-})
-
-const getLastOrder = document.getElementById('get-last-order-button')
-
-const getDataFromJsonAsArr = (jsonData) =>{
-    const arr = Object.keys(jsonData.items).map((dataKey) =>{
-        const temp = [jsonData['items'][dataKey]]
-        return arr.push(temp)
-    })
-    console.log(arr)
-
-}
-function displayMostRecentOrder(orderData) {
-    const latestOrderInfo = document.getElementById('latest-order-info')
-    getDataFromJsonAsArr(orderData)
-
 }
 
-getLastOrder.addEventListener('click', ()=>{
-    fetch('http://localhost:8000/latest-order').then(res => res.json()).then(res => displayMostRecentOrder(res))
 
+fetch('http://localhost:8000/menu')
+    .then(res => res.json())
+    .then(res => removeGifAndCreateMenuElements(res, createShoppingElementsAndDisplay));
+
+
+const orderForm = document.getElementById('order-form')
+orderForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+    sendOutOrder()
 })
+
+const getLastOrderBtn = document.getElementById('get-last-order-button')
+
+async function getLastOrder() {
+    const res = await fetch('http://localhost:8000/latest-order')
+
+    if (!res.ok) {
+        console.log("An error occurred while trying to get last order", res.status)
+    }
+    const lastOrder = await res.json()
+    displayMostRecentOrder(lastOrder)
+}
+
+getLastOrderBtn.addEventListener('click', getLastOrder)
