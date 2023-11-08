@@ -186,7 +186,8 @@ sendOutOrder = () => {
             method: "POST",
             headers: new Headers({'content-type': 'application/json'}),
             body: JSON.stringify(orderObject)
-        }).then(res => res.json()).then(res => console.log(res))
+        }).then(res => res.json())
+        .then(res => console.log(res))
 }
 
 
