@@ -1,0 +1,22 @@
+<div class="main-div">
+
+    <div class="controller">
+        <app-selector (newItemEvent)="setAlertAmount($event)"></app-selector>
+        <button mat-raised-button color="{{btnColor}}" (click)="changeAlertDisplay()">{{btnName}}</button>
+    </div>
+
+    <div class="main-alert-div">
+
+        <div *ngIf="alertDisplayed === 'warning'">
+            <app-warning-alert *ngFor="let _ of alertAmount"
+                               [warningMessage]="'This is a warning alert'"></app-warning-alert>
+        </div>
+        <div *ngIf="alertDisplayed === 'success'">
+            <app-success-alert *ngFor="let _ of alertAmount"
+                               [alertMessage]="'This is a success alert'"></app-success-alert>
+        </div>
+
+    </div>
+
+</div>
+

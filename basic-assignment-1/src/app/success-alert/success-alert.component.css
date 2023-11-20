@@ -1,0 +1,16 @@
+.success-alert-box {
+    height: 60px;
+    width: 1000px;
+
+    background-color: #dff0d8;
+    border: 2px solid #7ad72d;
+
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.p-success {
+    text-align: center;
+    color: darkgreen;
+    font-size: 24px;
+}
