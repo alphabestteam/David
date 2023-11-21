@@ -1,0 +1,35 @@
+<div>
+  <h1>Form Builder, Form Group, Form Control, Validators and ngSubmit</h1>
+
+  <p *ngIf="isFieldInvalid('username')" class="error">Invalid Username: username must be at least 3 characters long</p>
+  <p *ngIf="isFieldInvalid('email')" class="error">Invalid email: example email -> example@gmail.com</p>
+  <p *ngIf="isFieldInvalid('password')" class="error">Invalid password: password must be at least 8 characters long</p>
+
+  <form class="form" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <div class="field">
+      <label class="label">username</label>
+      <input type="text" class="input" formControlName="username" [ngClass]="isFieldInvalid('username')? 'invalid' : ''"/>
+    </div>
+    <div class="field">
+      <label class="label">email</label>
+      <input type="text" class="input" formControlName="email" [ngClass]="isFieldInvalid('email')? 'invalid' : ''"/>
+    </div>
+    <div class="field">
+      <label class="label" >password</label>
+      <input type="text" name="passwordField" class="input" formControlName="password" [ngClass]="isFieldInvalid('password')? 'invalid' : ''"/>
+    </div>
+
+    <div>
+      <button type="submit" class="button" [disabled]="!myForm.valid">Register</button>
+    </div>
+  </form>
+
+  <div *ngIf="isSubmitted">
+    <p>Username: {{submittedInfo.email}}</p>
+    <p>Email: {{submittedInfo.username}}</p>
+    <p>Password: You thought I was gonna show you the password didnt you!</p>
+  </div>
+
+
+</div>
+
