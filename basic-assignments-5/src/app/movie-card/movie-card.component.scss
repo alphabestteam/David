@@ -1,0 +1,47 @@
+#target {
+  position: absolute;
+  top: 25px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  font-size: 30px;
+  text-align: center;
+  font-family: sans-serif;
+  margin-top: 50px;
+}
+#target div p {
+  font-stretch: expanded;
+}
+
+#target > div {
+  animation: autoscroll 1000s linear;
+}
+
+#target::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0) 100%);
+  pointer-events: none;
+}
+
+.mainDiv {
+  position: relative;
+  transform-origin: 50% 100%;
+  transform: perspective(800px) rotateX(30deg);
+}
+
+#target {
+  color: yellow;
+  background: black;
+}
+
+@keyframes autoscroll {
+  to {
+    margin-top: -50000px;
+  }
+}
