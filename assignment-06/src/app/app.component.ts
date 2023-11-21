@@ -19,7 +19,7 @@ export class AppComponent {
 
   myForm: FormGroup;
 
-  isSubmitted = false;
+  isSubmitted: boolean = false;
 
   submittedInfo: Info = {
     email: '',
@@ -35,12 +35,12 @@ export class AppComponent {
     });
   }
 
-  isFieldInvalid(field: string) {
+  isFieldInvalid(field: string): boolean | undefined {
     const formControl = this.myForm.get(field)
     return formControl?.invalid && (formControl.dirty || formControl.touched)
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.submittedInfo.email = this.myForm.value.email
     this.submittedInfo.username = this.myForm.value.username
     this.submittedInfo.password = this.myForm.value.password
