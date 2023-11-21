@@ -1,0 +1,6 @@
+<mat-form-field>
+    <mat-label>Warning Amount</mat-label>
+    <select #selectElement matNativeControl required (change)="onSelected(parseInt(selectElement.value))">
+        <option *ngFor="let number of numbers" [value]="number">{{number}}</option>
+    </select>
+</mat-form-field>
