@@ -7,8 +7,15 @@ import {Component} from '@angular/core';
 })
 export class MyOuterComponent {
 
+    innerCounter: number = 5;
     outerCounter: number = 0;
-    handleOuterCounter(number: number): void {
-        this.outerCounter += number
+    handleOuterCounter(innerCounter: number): void {
+        if (innerCounter === 10 || innerCounter === -10) {
+            console.log(innerCounter)
+            this.outerCounter += innerCounter
+            this.innerCounter = 0
+        }else{
+            this.innerCounter = innerCounter;
+        }
     }
 }

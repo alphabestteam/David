@@ -1,7 +1,7 @@
 <div class="border border-dark rounded-3 w-75 mx-auto mt-5 p-4" style="background-color: #667986;">
     <h3 class="mb-4 text-center text-light">my-outer worked!</h3>
     <div class="text-center">
-        <app-my-inner (counterEmitter)="handleOuterCounter($event)"></app-my-inner>
+        <app-my-inner (counterEmitter)="handleOuterCounter($event)" [innerCounter]="innerCounter"></app-my-inner>
     </div>
     <p class="text-center mt-3 fs-4 text-light">total count: {{outerCounter}}</p>
 </div>
