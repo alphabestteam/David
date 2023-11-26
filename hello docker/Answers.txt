@@ -1,0 +1,28 @@
+1. Docker is a platform that helps developers package and run applications smoothly in a container.
+
+2. A docker image is a set of instructions (built by a DockerFile) and defines how the container should look/work. This is what gives the container
+   a structure to work with (Images are usually based off of other Images meaning we dont need to write a fill image from scratch).
+
+   To create a docker image you need to first create a DockerFile with instructions on it then run the following command:
+   docker build -t <name:tag> . 
+   The . in the end refers to the DockerFile location
+
+3. A Docker container runs on a server and is accessable just like any other server.
+   A container is structured based off the image that it was create from and also permaters that were initialized when creating the image.
+
+   To create the container you need to run the command:
+   docker run -d -p 8080:80 --name my_nginx nginx
+   -d is for Detached, 
+   -p means Port
+   --name assign the image to the container.
+
+   there are lots more flags that can be used to specifiy things you might need/want to do.
+
+4. Docker image is the structure of which the container needs to work with, whilst an Docker container is what holds the code/dependancies.
+
+5. Environment variables in dockers allows us to pass configuration information to a running container.
+   The variables are passed as key and value that can be used by the processes in the container to change how things should work.
+   We can do this by writing in the DockerFile ENV "Key" "Value"
+
+6. Volumes give us a way to manage data within the container.
+   We can use volimes to share data between my a folder in my PC to the containers file system. (similar to FileZila).
