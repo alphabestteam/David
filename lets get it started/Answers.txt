@@ -1,0 +1,3 @@
+Commands:
+    Docker load -i hello-world.tar - load existing image.
+    docker run hello-world - run the container.
