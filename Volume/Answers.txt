@@ -1,0 +1,24 @@
+Commands:
+    docker rm mysql_container
+
+    docker run -d -v /Users/davidmistriel/Desktop/sqlData:/var/lib/mysql -p 3306:3306 \
+    -e MYSQL_ALLOW_EMPTY_PASSWORD=yes \
+    -e MYSQL_ROOT_HOST='%' \
+    -e MYSQL_DATABASE=davidDB \
+    --name mysql_container \
+    mysql
+ 
+    docker stop mysql_container
+    docker rm mysql_container
+
+    docker run -d -v /Users/davidmistriel/Desktop/sqlData:/var/lib/mysql -p 3306:3306 \
+    -e MYSQL_ALLOW_EMPTY_PASSWORD=yes \
+    -e MYSQL_ROOT_HOST='%' \
+    -e MYSQL_DATABASE=davidDB \
+    --name mysql_container \
+    mysql
+
+
+After deleting it and recreating it it seemed to have kept all of the data since it was saved to the volume.
+The volume is connected to the file in the container so when we ran the SQL on our DB it saved the information in our volumes folder. Once we deleted
+and recreated it it saved the info and reapplied it do the db.
