@@ -1,0 +1,8 @@
+1.  Layers lets us update the image based off of what was changed meaning only the places that changes occur that's where
+    the updates will be preformed. This saves both time and resources.
+
+2.  The first option is better since it creates fewer layers since for each time you run the RUN command it needs to create a new layer.
+    The reason we want fewer layers is to reduce the size of the image.
+
+3.  To find the history of all layers we need to run the command: docker history <image>
+
