@@ -1,0 +1,11 @@
+Commands:
+    docker pull tomcat
+    docker run -p 8080:8080 --name mytomcat tomcat
+
+    docker exec -it mytomcat /bin/bash
+    mv webapps webapps2
+    mv webapps.dist/ webapps
+    exit
+
+    docker build -t mytomcat_image:1 .
+    docker run -p 8080:8080 --name my-tomcat-container mytomcat_image:1

@@ -1,11 +1,11 @@
 Commands:
     Part1:
-        docker build -t my_flask_image:1 .
-        docker run ip 5001:5001 --name docker_is_the_best my_flask_image:1
+        docker build -t app1:1 .
+        docker run ip 5001:5001 --name docker_is_the_best app1:1
         docker ps -a (-a is optional)
         docker stop docker_is_the_best
         docker rm docker_is_the_best
 
 
     part2:
-        docker run -p 5001:5001 -v ./logs:/app/logs --name docker_is_the_best my_flask_image:1
+        docker run -p 5001:5001 -v ./logs:/app/logs --name docker_is_the_best app1:1
