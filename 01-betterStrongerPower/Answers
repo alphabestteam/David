@@ -1,0 +1,30 @@
+Part1:
+    1.  version - what version this docker compose is currently at.
+
+        services - List of all services that we are going to run in this docker compose.
+            image - lets us know what image we are using.
+            container_name - lets us set a name for that specific container.
+            environment - Here we put env values that we would like to set up.
+            ports - the port that will be exposed on the web
+            volumes - set up volumes and configure where they should be mounted.
+                type - defines what type of will be used for the volume.
+                source - the source of the volume on our pc.
+                target - where we are connecting the volume to in the container.
+
+        volumes - here we define all volumes.
+
+    2.  Error: Cant connect to the server on page localhost:8081 becuase safari cant connect to the server localhost.
+
+
+    3.  The way to solve this is to add a "ports" attribute with the ports you want this will let us connect to
+        the server using that port.
+            ports:
+              - "8081:8081"
+
+
+    4. to stop and remove the compose we can run the command: docker-compose down
+
+
+Part2:
+    1.  We can create an .env file to store all the env variables this way we can use them in
+        multiple places and change them easily.
