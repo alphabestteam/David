@@ -1,0 +1,4 @@
+Commands:
+    docker-compose up           -- run the docker-compose
+    docker-compose down         -- remove docker-compose
+    docker-compose build        -- build new image instead of deleting and recreating
