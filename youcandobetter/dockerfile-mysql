@@ -1,9 +1,0 @@
-FROM users_mysql
-
-WORKDIR /app
-
-RUN sudo service mysql start
-
-EXPOSE 3306
-
-CMD ["net", "start"]
