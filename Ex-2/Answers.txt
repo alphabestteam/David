@@ -1,0 +1,1 @@
+1. The correct object to use to allow networking between different deployments is "service".
