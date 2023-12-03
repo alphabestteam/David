@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: backend-pod
+  namespace: davids-namespace
+spec:
+  containers:
+  - name: backend-container
+    image: ghcr.io/expruc/kubernetes-gradutaion-drill/k8s-final-drill:backend
+    ports:
+    - containerPort: 8080
