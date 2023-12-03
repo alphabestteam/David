@@ -9,7 +9,7 @@
     Docker pull ghcr.io/expruc/kubernetes-gradutaion-drill/k8s-final-drill:frontend
     Docker pull ghcr.io/expruc/kubernetes-gradutaion-drill/k8s-final-drill:backend
 
-    kubectl apply -f frontendPod.yaml
-    kubectl apply -f backendPod.yaml
+    kubectl apply -f frontend-deployment.yaml
+    kubectl apply -f backend-deployment.yaml
 
     kubectl get pods -n davids-namespace
