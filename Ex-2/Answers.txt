@@ -1,1 +1,2 @@
-1. The correct object to use to allow networking between different deployments is "service".
+1.  The correct object to use to allow networking between different deployments is "service".
+    Once we add the services to the yaml file we can simply apply it to the namespace and it will detect the changes and apply them.
