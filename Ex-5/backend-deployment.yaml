@@ -4,7 +4,7 @@ metadata:
   name: backend-deployment
   namespace: davids-namespace
 spec:
-  replicas: 3
+  replicas: 4
   selector:
     matchLabels:
       app: backend
@@ -15,9 +15,9 @@ spec:
     spec:
       containers:
       - name: backend-container
-        image: ghcr.io/expruc/kubernetes-gradutaion-drill/k8s-final-drill:backend
+        image: ghcr.io/expruc/kubernetes-graduation-drill/k8s-final-drill:backend
         ports:
         - containerPort: 8080
         envFrom:
-          - configMapRef:
+        - configMapRef:
             name: backend-configmap
