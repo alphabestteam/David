@@ -16,12 +16,12 @@ spec:
     spec:
       containers:
       - name: frontend-container
-        image: ghcr.io/expruc/kubernetes-gradutaion-drill/k8s-final-drill:frontend
+        image: ghcr.io/expruc/kubernetes-graduation-drill/k8s-final-drill:frontend
         ports:
         - containerPort: 5050
-        env:
-        - name: PORT
-          value: "5050"
-        - name: BACKENDURL
-          value: "http://backend-service:8080"  
-
+        envFrom:
+        - configMapRef:
+          name: frontend-configmap
+        - secretRef:
+          name: frontend-secret
+           
