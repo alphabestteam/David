@@ -1,1 +1,8 @@
-1.  If we make our service type NodePort it will expose the port so we can access it throught the web.
+1.  Using Ingress will let us expose the port externally and allow HTTP routes from outside the cluster while keeping the inner services isolated.
+    It also has the ability to define how HTTP/s traffic should be routed to our services and can handle load balancing.
+
+    Another thing we should do is instead of using NodePort to expose our service we should use ClusterIP.
+    ClusterIP service exposes the service within the cluster which pairs perfectly with Ingress since Ingress exposes the port externally.
+
+    The reason we use Ingress and ClusterIP over NodePort is because NodePort has limitations and security issues.
+    It also doesn't know how to deal with LoadBalancer.
