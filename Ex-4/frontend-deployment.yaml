@@ -20,7 +20,7 @@ spec:
         - containerPort: 5050
         envFrom:
         - configMapRef:
-          name: frontend-configmap
+            name: frontend-configmap
         - secretRef:
-          name: frontend-secret
+            name: frontend-secret
            
