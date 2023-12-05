@@ -1,1 +1,0 @@
-1.  If we make our service type NodePort it will expose the port so we can access it throught the web.

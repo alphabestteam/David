@@ -1,0 +1,14 @@
+1.  One of the main issues is if we have lots of varaibles and lots of them go over eachother things start getting messy
+    which makes configuring more annoying. Thats where "Secret" object comes in, "Secret" allows us to store varaibles in a seperate file which then
+    allows us to use it in multiple places
+
+    If we have lots of variables we want to add and we could use the object "Secret" which allows 
+    us to reference the file to get the variables.
+    
+    Using Secret lets us store sensitive information in a secure way.
+    But another very important thing is that it gives us a more comfortable way to store variables and change them
+    which allows us to configure variables in multiple places and overall keeps things clean.
+
+2.  
+
+
