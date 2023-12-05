@@ -1,7 +1,7 @@
 1.  There are two ways to change the amount of pods in your production  
-    To customize the amount of pods you want in your backend applicaiton you can simply change the amount of replicas: <amount> to a different number.
-    The other way is to do it using the cli using the command: 
+    a. To customize the amount of pods you want in your backend applicaiton you can simply change the amount of replicas: <amount> to a different number.
+    
+    b. The other way is to do it using the cli using the command: 
     kubectl scale deployment frontend-deployment --replicas=3
 
-
-
+3.  The reason we do this is to create more instances of that pod to help with varius things such as traffic.
