@@ -23,4 +23,8 @@ spec:
             name: frontend-configmap
         - secretRef:
             name: frontend-secret
+        resources:
+          limits:
+            cpu: 20m
+            memory: 100mi
            

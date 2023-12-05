@@ -21,3 +21,8 @@ spec:
         envFrom:
         - configMapRef:
             name: backend-configmap
+        resources:
+          limits:
+            cpu: 20m
+            memory: 100mi
+
