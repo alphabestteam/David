@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  namespace: davids-namespace
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend-container
+        image: ghcr.io/expruc/kubernetes-graduation-drill/k8s-final-drill:backend
+        ports:
+        - containerPort: 8080
+        envFrom:
+        - configMapRef:
+            name: backend-configmap
+        resources:
+          limits:
+            cpu: 20m
+            memory: 100Mi
+        readinessProbe:
+          httpGet:
+            path: /         # Need to change to healthEndpoint path but dont have one
+            port: 8080
+          initialDelaySeconds: 3
+          periodSeconds: 5
