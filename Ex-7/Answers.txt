@@ -1,0 +1,5 @@
+1.  Readiness Probes helps with determining if a container in a pod is ready to be exposed by sending a request to a specified endpoint.
+    It checks to see if the pod is up and health before allowing it to get requests.
+    
+2.  Readiness Probes prevents a lot of problems such as requests being sent before it can handle them if they cant handle request that can cause crashes 
+    and other problems. 

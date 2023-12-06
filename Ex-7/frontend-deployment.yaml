@@ -26,5 +26,10 @@ spec:
         resources:
           limits:
             cpu: 20m
-            memory: 100mi
-           
+            memory: 100Mi
+        readinessProbe:
+          httpGet:
+            path: /         # Need to change to healthEndpoint path but dont have one
+            port: 5050
+          initialDelaySeconds: 3
+          periodSeconds: 5
