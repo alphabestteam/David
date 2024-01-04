@@ -1,10 +1,8 @@
-1. LocalStorage is saved locally and is only deleted when the clear() function is called
-SeasonStorage is saved on that season meaning it will be cleared when the season you currenly are on is over
-(It also can be cleared using the clear() function). A season is over when you close chrome and a season starts
+1. LocalStorage is saved locally and is only deleted when the clear() function is called.
+SessionStorage is saved on that session meaning it will be cleared when the session you currently are on is over
+(It also can be cleared using the clear() function). A session is over when you close chrome and starts
 when we reopen chrome (Works same way for the most part for all other applications like safari)
 
 2. LocalStorage is better used when saving data for a longer period of time.
 
-3. SeasonStorage is better used for data that we dont want to save for a long time.
-
-
+3. SessionStorage is better used for data that we dont want to save for a long time.
