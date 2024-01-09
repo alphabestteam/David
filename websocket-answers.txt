@@ -1,0 +1,24 @@
+1. WebSocket is a way to send data from client to server and server to client.
+It's good for realtime applications since it updates in live time.
+
+2. One of the best things about WebSockets is that it's live meaning it can get updates without refreshing the page.
+This is very useful for applications like messages or games since it allows us to receive updates in live without needing
+to call any endpoints or refreshing the page.
+
+3. WebSockets transfer string or binary data.
+
+4. Websockets have some disadvantages and limitations.
+Websockets are not optimized for streaming audio and video data, they also sometimes have issues with connections since
+some environments block websockets connections.
+Another limitation that websockets have is that they are stateful meaning its hard to use it in large systems that consist of multiple socket servers.
+
+5. WebSockets work in a very interesting and different way from regular server-client servers, instead of always asking the backend
+if there was an update in our application we create a tunnel that connects to both the client and server. Then we can just check if that tunnel
+has any data inside waiting to be collected.
+If the server wants to send something to the client the server sends it inside the socket and the client can then just check the socket and
+get the data. This makes things work in live time and no need to wait or ask the backend every second for updates.
+
+6. The difference between WSS and WebSockets is that WSS is encrypted with TLS connection meaning you need to use https rather than http when using WSS.
+
+
+
