@@ -1,0 +1,24 @@
+1. JWT stands for JSON Web Token and is used to securely transfer sensitive data between client
+and server (not always client and server) as a JSON object.
+
+2. JWT is built with 3 different parts
+
+    a -> Header
+    b -> Payload
+    c -> Signature
+
+Header contains the algorithm that the token is using and what type of token example: { "alg": "HS256", "typ": "JWT" }
+Payload is what carries the data example: { "id": "123456789", "name": "John Doe", "isAdmin": true }
+Signature is where the encoding and Hashing happens its done by combining the base64Encode header + base64Encode payload + secret. When combining them they need to be seperated by a dot.
+Secret is the algorithm that was specified in the header
+
+3. JWT is typically used to securely transfer data and identify the user.
+
+4. JWT is created by combining the encoded header with the encoded payload plus the secret which creates a signature that we can now use to verify things with.
+
+5. To verify the JWT we simply need to decode the token that we get from the client. Once decoded, we have all the claims and can now direct to where he needs depending on the claims that we got.
+
+
+JWT token that I created:
+eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkRvdmlkIiwiZXhwIjoxNzA3MDU3NjUzLCJpYXQiOjE3MDQzNzkyNTN9.VNb96HyzdYyDoW2ACCRDjWCSvvWNNah8AHv5H_ZoiaY
+As you can see the dots is what separates the encoded header from the payload and from the signature.
