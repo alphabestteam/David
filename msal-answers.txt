@@ -1,0 +1,12 @@
+1. MSAL is an authentication library that lets developers acquire security
+tokens from the microsoft identity platform to authenticate users.
+The main point in using MSAL is to simplify the process of authentications using Microsoft services.
+
+2. MSAL supports alot of types of applications including web applications, mobile, desktop, single-page apps and more.
+
+3. Access tokens, Refresh tokens, ID tokens and more.
+
+4. MSAL has lots of important components such as MSAL Core library, Platform Specific libraries, Authentication Flows, Token Cache, Error Handling and more.
+
+5. First we need to register our app with Azure Active Directory to get a client ID and configuration details, then initialize MSAL in
+the configurations using the clientID, authenticate the users using tokens.
