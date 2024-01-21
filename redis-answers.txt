@@ -1,0 +1,21 @@
+1. Redis is an open source in-memory data structure that stores data in a Key-Value system.
+
+2. Advantages:
+    1. In-Memory data - In-Memory means Redis stores data in RAM which makes it super fast for read and write operations.
+    2. Performance - Redis is very good when it comes to performance. It was build to handle large number of operations per second.
+    3. Easy to use - Redis is very straight and simple to understand.
+
+3. Redis supports a lot of variables:
+    Strings
+    Hashes
+    Lists
+    Sets
+    Bitmaps
+    HyperLogLog
+    Geospatial Data
+
+4. Redis has some disadvantages such as:
+Memory usage - since it stores data in the memory
+single thread - Redis uses a single thread which can become a bottleneck for the CPU
+No built-in language - Redis doesn't have a query language like SQL so retrieving data is done through key based operations. This means complex things like join are not supported.
+
